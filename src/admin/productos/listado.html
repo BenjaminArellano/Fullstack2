@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Level Up Gamer</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="d-flex">
+    <!-- Barra lateral -->
+    <aside class="bg-dark text-white p-3 vh-100" style="width: 250px;">
+        <h4>Admin</h4>
+            <ul class="nav flex-column">
+                <li class="nav-item"><a class="nav-link text-white" href="../admin.html">Dashboard</a></li>
+
+                <!-- Productos -->
+                <li class="nav-item">
+                    <a class="nav-link text-white" data-bs-toggle="collapse" href="#menuProductos" role="button">
+                    Productos 
+                    </a>
+                    <div class="collapse" id="menuProductos">
+                        <ul class="nav flex-column ms-3">
+                            <li><a class="nav-link text-white" href="./listado.html">• Listado</a></li>
+                            <li><a class="nav-link text-white" href="./nuevo.html">• Nuevo Producto</a></li>
+                        </ul>
+                    </div>
+                </li>
+
+                <!-- Usuarios -->
+                <li class="nav-item">
+                    <a class="nav-link text-white" data-bs-toggle="collapse" href="#menuUsuarios" role="button">
+                    Usuarios 
+                    </a>
+                    <div class="collapse" id="menuUsuarios">
+                        <ul class="nav flex-column ms-3">
+                            <li><a class="nav-link text-white" href="../usuarios/listado.html">• Listado</a></li>
+                            <li><a class="nav-link text-white" href="../usuarios/nuevo.html">• Nuevo Usuario</a></li>
+                        </ul>
+                    </div>
+                </li>
+
+                <li class="nav-item"><a class="nav-link text-white" href="#">Salir</a></li>
+            </ul>
+    </aside>
+
+    <main class="container mt-4">
+        <div class="d-flex justify-content-between align-items-center mb-3">
+            <h2>Listado de Productos</h2>
+            <button class="btn btn-danger" onclick="resetearProductos()">Resetear Productos</button>
+            <a href="nuevo.html" class="btn btn-primary">Agregar Producto</a>
+            
+        </div>
+
+        <table class="table table-striped table-bordered">
+            <thead class="table-dark">
+                <tr>
+                    <th>ID</th>
+                    <th>Nombre</th>
+                    <th>Categoría</th>
+                    <th>Precio</th>
+                    <th>Stock</th>
+                    <th>Accion</th>
+                </tr>
+            </thead>
+            <tbody id="tabla-productos">
+                
+            </tbody>
+        </table>
+    </main>
+<body>
+    
+    <script src="../../assets/js/productos.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
