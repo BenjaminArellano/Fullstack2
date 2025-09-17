@@ -1,4 +1,3 @@
-
 const productosIniciales = [
     { id: "JM001", categoria: "Juegos de Mesa", nombre: "Catan", precio: 29990, stock: 10 },
     { id: "JM002", categoria: "Juegos de Mesa", nombre: "Carcassonne", precio: 24990, stock: 10 },
@@ -12,28 +11,23 @@ const productosIniciales = [
     { id: "PP001", categoria: "Poleras Personalizadas", nombre: "Polera Gamer Personalizada 'Level-Up'", precio: 14990, stock: 25 }
 ];
 
-
 if (!localStorage.getItem("productos")) {
     localStorage.setItem("productos", JSON.stringify(productosIniciales));
 }
-
 
 function obtenerProductos() {
     return JSON.parse(localStorage.getItem("productos")) || [];
 }
 
-
 function guardarProductos(productos) {
     localStorage.setItem("productos", JSON.stringify(productos));
 }
-
 
 function agregarProducto(producto) {
     const productos = obtenerProductos();
     productos.push(producto); 
     guardarProductos(productos);
 }
-
 
 function editarProducto(id, datosActualizados) {
     const productos = obtenerProductos();
@@ -44,13 +38,11 @@ function editarProducto(id, datosActualizados) {
     }
 }
 
-
 function eliminarProducto(id) {
     let productos = obtenerProductos();
     productos = productos.filter(p => p.id !== id);
     guardarProductos(productos);
 }
-
 
 function renderizarTabla() {
     const tabla = document.getElementById("tabla-productos");
@@ -76,7 +68,6 @@ function renderizarTabla() {
     });
 }
 
-
 function confirmarEliminar(id) {
     if (confirm("¿Desea eliminar este producto?")) {
         eliminarProducto(id);
@@ -84,8 +75,74 @@ function confirmarEliminar(id) {
     }
 }
 
+function mostrarModalProductoAgregado() {
+    const modalHtml = `
+    <div class="modal fade" id="productoAgregadoModal" tabindex="-1" aria-labelledby="productoAgregadoModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content bg-dark text-white">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="productoAgregadoModalLabel">Producto Agregado</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                </div>
+                <div class="modal-body">
+                    Producto agregado correctamente.
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" id="modalCerrarBtn">Cerrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    `;
+    document.body.insertAdjacentHTML('beforeend', modalHtml);
+    const modalElement = document.getElementById('productoAgregadoModal');
+    const modal = new bootstrap.Modal(modalElement);
+    modal.show();
 
-document.addEventListener("DOMContentLoaded", renderizarTabla);
+    const cerrarBtn = document.getElementById('modalCerrarBtn');
+    cerrarBtn.addEventListener('click', () => {
+        modal.hide();
+        modalElement.remove();
+        window.location.href = 'listado.html';
+    });
+
+    modalElement.addEventListener('hidden.bs.modal', () => {
+        modalElement.remove();
+        window.location.href = 'listado.html';
+    });
+}
+
+document.addEventListener("DOMContentLoaded", function() {
+    renderizarTabla();
+
+    // Handle form submission for nuevo producto
+    const form = document.getElementById('form-nuevo-producto');
+    if (form) {
+        form.addEventListener('submit', function(event) {
+            event.preventDefault();
+            if (!this.checkValidity()) {
+                this.classList.add('was-validated');
+                return;
+            }
+
+            const formData = new FormData(this);
+            const producto = {
+                id: formData.get('codigo'),
+                nombre: formData.get('nombre'),
+                descripcion: formData.get('descripcion') || '',
+                precio: parseFloat(formData.get('precio')),
+                stock: parseInt(formData.get('stock')),
+                stockCritico: formData.get('stockCritico') ? parseInt(formData.get('stockCritico')) : 0,
+                categoria: formData.get('categoria')
+            };
+
+            agregarProducto(producto);
+            setTimeout(() => {
+                mostrarModalProductoAgregado();
+            }, 100);
+        });
+    }
+});
 
 function resetearProductos() {
     if (confirm("¿Seguro que quieres resetear la lista de productos?")) {

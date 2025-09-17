@@ -1,0 +1,132 @@
+:root {
+    --bs-body-bg: #000000;
+    --bs-body-color: #FFFFFF;
+    --bs-primary: #1E90FF;
+    --bs-success: #39FF14;
+    --bs-secondary: #D3D3D3;
+    --bs-info: #00BFFF;
+    --bs-warning: #FFD700;
+    --bs-danger: #FF4500;
+    --bs-dark: #333333;
+    --bs-light: #1a1a1a;
+}
+
+body {
+    background-color: var(--bs-body-bg);
+    color: var(--bs-body-color);
+    font-family: 'Roboto', sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Orbitron', monospace;
+    color: var(--bs-body-color);
+}
+
+.bg-dark {
+    background-color: var(--bs-dark) !important;
+}
+
+.card {
+    background-color: var(--bs-light);
+    border: 1px solid #333333;
+    color: var(--bs-body-color);
+}
+
+.card-text {
+    color: var(--bs-secondary);
+}
+
+.nav-link {
+    color: var(--bs-secondary) !important;
+}
+
+.nav-link:hover {
+    color: var(--bs-primary) !important;
+}
+
+.table {
+    background-color: var(--bs-light);
+    color: var(--bs-body-color);
+}
+
+.table th {
+    background-color: #333333;
+    color: var(--bs-body-color);
+}
+
+.table td {
+    color: var(--bs-secondary);
+}
+
+.table-striped tbody tr:nth-of-type(odd) {
+    background-color: #222222;
+}
+
+.btn-primary {
+    background-color: var(--bs-primary);
+    border-color: var(--bs-primary);
+}
+
+.btn-primary:hover {
+    background-color: #0066CC;
+    border-color: #0066CC;
+}
+
+.btn-success {
+    background-color: var(--bs-success);
+    border-color: var(--bs-success);
+    color: #000000;
+}
+
+.btn-success:hover {
+    background-color: #28A745;
+    border-color: #28A745;
+    color: #000000;
+}
+
+.btn-info {
+    background-color: var(--bs-info);
+    border-color: var(--bs-info);
+    color: #000000;
+}
+
+.btn-info:hover {
+    background-color: #0099CC;
+    border-color: #0099CC;
+    color: #000000;
+}
+
+.btn-warning {
+    background-color: var(--bs-warning);
+    border-color: var(--bs-warning);
+    color: #000000;
+}
+
+.btn-warning:hover {
+    background-color: #E6B800;
+    border-color: #E6B800;
+    color: #000000;
+}
+
+.btn-danger {
+    background-color: var(--bs-danger);
+    border-color: var(--bs-danger);
+}
+
+.btn-danger:hover {
+    background-color: #CC3300;
+    border-color: #CC3300;
+}
+
+.form-control, .form-select {
+    background-color: #808080;
+    color: #ffffff;
+    border: 1px solid #555555;
+}
+
+.form-control:focus, .form-select:focus {
+    background-color: #444444;
+    color: #ffffff;
+    border-color: var(--bs-primary);
+    box-shadow: 0 0 0 0.2rem rgba(30, 144, 255, 0.25);
+}
