@@ -10,7 +10,7 @@
 <body>
 <nav class="navbar fixed-top">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#"><img src="../assets/img/Captura.PNG" alt=""></a>
+    <a class="navbar-brand" href="../tienda/tienda.html"><img src="../assets/img/Captura.PNG" alt=""></a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -38,21 +38,41 @@
 
 
   <div class="log-reg">
+    <div>
     <img src="../assets/img/ChatGPT Image 17 sept 2025, 00_37_19.png" alt="Logo level-up gamer fondo verde">
+    </div>
+    <div>
     <h1>Registro nuevo usuario</h1>
-    <textarea class="recuadros" placeholder="Nombre completo"></textarea>
-    <textarea class="recuadros" placeholder="Correo"></textarea>
-    <textarea class="recuadros" placeholder="Repetir correo"></textarea>
-    <textarea class="recuadros" placeholder="Contraseña"></textarea>
-    <textarea class="recuadros" placeholder="Confirmar contraseña"></textarea>
-    <textarea class="recuadros" placeholder="Telefono(Opcional)"></textarea>
+    <input class="recuadros" placeholder="Run"></input>
+    <input class="recuadros" placeholder="Nombre completo"></input>
+    <input type="email" class="recuadros" placeholder="Correo"></input>
+    <input type="email" class="recuadros" placeholder="Repetir correo"></input>
+    <input type="password" class="recuadros" placeholder="Contraseña"></input>
+    <input type="password" class="recuadros" placeholder="Confirmar contraseña"></input>
+    <input class="recuadros" placeholder="Telefono(Opcional)"></input>
+    </div>
+    <div>
+      <select>
+        <option value="" disabled selected>Seleccione region</option>
+        <option value="opcion1">Region 1</option>
+        <option value="opcion2">Region 2</option>
+      </select>
 
-    <button class="registro">Registrarse</button>
+      <select>
+        <option value="" disabled selected>Seleccione comuna</option>
+        <option value="opcion1">Puente alto</option>
+        <option value="opcion2">chimbarongo</option>
+      </select>
+      
+    </div>
+    <div>
+    <button class="registro" style="margin-top: 10px;">Registrarse</button>
      <h6><a href="../tienda/Login.html" >Si ya tiene cuenta presione aqui</a></h6>
-</div>
+    </div>
+  </div>
 
 <footer >
-  <textarea placeholder="Enter Email"></textarea>
+  <input placeholder="Enter Email"></textarea>
   <button type="button" class="btn btn-danger">Enviar</button>
 </footer>  
 </body>
