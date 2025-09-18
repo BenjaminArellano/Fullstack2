@@ -9,10 +9,12 @@ body {
     grid-template-rows: auto 1fr auto;
     gap: 20px;
     min-height: 100vh;
+    padding-top:100px;
 }
 
 .navbar{
     background-color: #39FF14;
+    border: 2px solid rgb(0, 0, 0); 
 }
 
 .navbar img{ 
@@ -74,18 +76,17 @@ footer {
     display: flex;
     padding-top: 20px;
     padding-bottom: 20px;
-    margin-right: 10px;
     justify-content: flex-end;
 }
 
 footer input{
     height: 40px;
     resize: none;
+    margin-right: 10px;
     border-radius: 10px;
 }
 
 .log-reg{
-    margin-top: 200px;
     background-color: #39FF14;
     text-align: center;
     display: flex;
@@ -94,6 +95,7 @@ footer input{
     flex-wrap: wrap;      /* permite varias filas */
     gap: 10px;            /* espacio entre productos */
 }
+
 .log-reg img{
     height: 100px;
     width: 100px;
@@ -120,4 +122,65 @@ footer input{
 }
 .registro:hover{
     background-color: red;
+}
+
+.titulo-noticia{
+    background-color: #39FF14;
+    margin: 10px;
+    text-align: center;
+}
+
+.noticia{
+    background-color: #39FF14;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.noticia img{
+    width: 200px;
+    height: auto;
+    margin: 10px;
+}
+
+.noticia .texto-noticia{
+    max-width: 60%;
+    text-align: center;
+}
+
+.noticia .botonnoticia{
+    background-color: rgb(79, 37, 228);
+    border-radius: 10px;
+}
+
+.mensaje{
+    background-color: #39FF14;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.mensaje img{
+    height: 100px;
+    width: 100px;
+    display: block;
+    align-items: center;
+}
+
+.form_men{
+    width: 300px;
+}
+
+.cuadro{
+    width: 300px;
+    height: auto;
+    margin-bottom: 10px;
+}
+
+.boton_envio{
+    border-radius: 10px;
+    background-color: #1E90FF;
+    margin-bottom: 15px;
 }
