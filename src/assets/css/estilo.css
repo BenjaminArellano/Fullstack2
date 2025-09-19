@@ -3,13 +3,19 @@ body {
     display: grid;
     grid-template-areas: 
         "nav"
-        "main"
+        "body"
         "footer";
     grid-template-columns: 1fr;
     grid-template-rows: auto 1fr auto;
     gap: 20px;
     min-height: 100vh;
     padding-top:100px;
+}
+
+.carrusel_prin{
+    text-align: center;
+    align-items: center;
+    display: flex;
 }
 
 .navbar{
@@ -257,7 +263,22 @@ footer input{
     width: auto;
     width: 350px;
     object-fit: contain;
+
 }
+
+.carrusel_prin{
+    margin-top: 10px;
+    background-color: #39FF14;
+    display: flex;
+    width: auto;
+    justify-content: center;
+}
+
+.carrusel_prin img{
+    height: 350px;
+    width: auto;
+}
+
 .card-body{
     background-color: #1E90FF;
 }
@@ -275,4 +296,11 @@ footer input{
     height: auto;
     width: 50%;
     margin: 10px;
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    background-color: black;  /* <-- color de los botones */
+    border-radius: 50%;       /* opcional: redondea el botón */
+    background-size: 100%, 100%; /* ajusta el tamaño del ícono */
 }
