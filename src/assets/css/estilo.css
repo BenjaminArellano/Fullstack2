@@ -18,8 +18,8 @@ body {
 }
 
 .navbar img{ 
-    height: 500%;
-    width: 30%;
+    height: auto;
+    width: 50px;
  }
 main {
     grid-area: main;
@@ -183,4 +183,96 @@ footer input{
     border-radius: 10px;
     background-color: #1E90FF;
     margin-bottom: 15px;
+}
+.list_prod{
+    background-color: #39FF14;
+    text-align: center;
+    align-items: center;
+    margin-bottom: 10px;
+
+}
+
+.distribucion{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+    align-items: center;
+}
+.ele_prod{
+    flex: 1 1 30%;
+    min-width: 200px;
+    max-width: 250px;
+    text-align: center;
+    background-color: #39FF14;
+    display: flex;
+    flex-direction: column;
+    margin: 5px;
+    align-items: center;
+}
+
+.ele_prod img{
+    height:auto;
+    width: 200px;
+    margin: 10px;
+}
+
+.agregar{
+    
+    background-color: #1E90FF;
+    border-radius: 10px;
+    min-width: 200px;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.contenedor{
+    background-color: #39FF14;
+    text-align: center;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    gap: 20px;
+    display: flex;
+}
+
+
+
+.contenedor img{
+    height: 300px;
+    width: auto;
+    margin: 10px;
+    flex-wrap: wrap;
+}
+
+.info{
+    flex: 0 0 50%;
+    text-align: center;
+    align-items: center;
+    max-width: 60%;
+    display: flex;
+    flex-direction: column;
+}
+.carousel{
+    width: auto;
+    width: 350px;
+    object-fit: contain;
+}
+.card-body{
+    background-color: #1E90FF;
+}
+
+.contenedor_vertical{
+    display: flex;
+    flex-direction: column;
+    background-color: #39FF14;
+    align-items: center;
+    text-align: center;
+    margin: 10px;
+}
+
+.contenedor_vertical img{
+    height: auto;
+    width: 50%;
+    margin: 10px;
 }
