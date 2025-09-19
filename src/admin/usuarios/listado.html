@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Level Up Gamer</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="../../assets/css/admin.css">
+</head>
+<body>
+    <div class="d-flex">
+
+    <aside class="bg-dark text-white p-3 vh-100 d-flex flex-column" style="width: 250px;">
+        <div class="d-flex align-items-center mb-3">
+            <img src="../../assets/img/icon.png" alt="Level-Up Gamer" style="height: 40px; width: auto;">
+            <span class="ms-2 fs-5 fw-bold">Level-Up Gamer</span>
+        </div>
+        <hr class="border-secondary">
+        <h4>Admin</h4>
+            <ul class="nav flex-column flex-grow-1">
+                <li class="nav-item"><a class="nav-link text-white" href="../admin.html">Dashboard</a></li>
+
+
+                <li class="nav-item">
+                    <a class="nav-link text-white" data-bs-toggle="collapse" href="#menuProductos" role="button">
+                    Productos
+                    </a>
+                    <div class="collapse" id="menuProductos">
+                        <ul class="nav flex-column ms-3">
+                            <li><a class="nav-link text-white" href="../productos/listado.html">Listado</a></li>
+                            <li><a class="nav-link text-white" href="../productos/nuevo.html">Nuevo Producto</a></li>
+                        </ul>
+                    </div>
+                </li>
+
+
+                <li class="nav-item">
+                    <a class="nav-link text-white" data-bs-toggle="collapse" href="#menuUsuarios" role="button">
+                    Usuarios
+                    </a>
+                    <div class="collapse show" id="menuUsuarios">
+                        <ul class="nav flex-column ms-3">
+                            <li><a class="nav-link text-white active" href="./listado.html">• Listado</a></li>
+                            <li><a class="nav-link text-white" href="./nuevo.html">• Nuevo Usuario</a></li>
+                        </ul>
+                    </div>
+                </li>
+            </ul>
+            <ul class="nav flex-column">
+                <li class="nav-item"><a class="nav-link text-white" href="#">Salir</a></li>
+            </ul>
+    </aside>
+
+    <main class="container mt-4">
+        <div class="d-flex justify-content-between align-items-center mb-3">
+            <h2>Listado de Usuarios</h2>
+            <div>
+                <button class="btn btn-danger me-2" onclick="resetearUsuarios()" title="Resetear Usuarios">
+                    <i class="fas fa-undo"></i>
+                </button>
+                <a href="nuevo.html" class="btn btn-success" title="Agregar Usuario">
+                    <i class="fas fa-plus"></i>
+                </a>
+            </div>
+        </div>
+
+        <div class="mb-3">
+            <input type="text" class="form-control" id="search-input" placeholder="Buscar por nombre o email...">
+        </div>
+
+        <table class="gamer-table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>RUT</th>
+                    <th>Nombre</th>
+                    <th>Email</th>
+                    <th>Región</th>
+                    <th>Comuna</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody id="tabla-usuarios">
+
+            </tbody>
+        </table>
+
+        <nav aria-label="Paginación de usuarios">
+            <ul class="pagination justify-content-center" id="pagination">
+
+            </ul>
+        </nav>
+
+
+
+
+    </main>
+
+
+    <div class="modal fade" id="editarUsuarioModal" tabindex="-1" aria-labelledby="editarUsuarioModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content bg-dark text-white">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="editarUsuarioModalLabel">Editar Usuario</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-card">
+                        <form id="form-editar-usuario-modal" novalidate>
+                            <div class="form-grid">
+                                <div class="mb-3">
+                                    <label for="edit-rut-modal" class="form-label">RUT <span class="text-danger">*</span></label>
+                                    <input
+                                        type="text"
+                                        class="form-control"
+                                        id="edit-rut-modal"
+                                        name="rut"
+                                        required
+                                        maxlength="9"
+                                        placeholder="19011022K"
+                                        readonly
+                                    />
+                                    <input type="hidden" id="hidden-rut-input" name="rut" />
+                                    <div class="invalid-feedback">
+                                        RUT es requerido y debe ser válido.
+                                    </div>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="edit-nombre-modal" class="form-label">Nombre <span class="text-danger">*</span></label>
+                                    <input
+                                        type="text"
+                                        class="form-control"
+                                        id="edit-nombre-modal"
+                                        name="nombre"
+                                        required
+                                        maxlength="100"
+                                    />
+                                    <div class="invalid-feedback">
+                                        El nombre es requerido y debe tener máximo 100 caracteres.
+                                    </div>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="edit-email-modal" class="form-label">Email <span class="text-danger">*</span></label>
+                                    <input
+                                        type="email"
+                                        class="form-control"
+                                        id="edit-email-modal"
+                                        name="email"
+                                        required
+                                        maxlength="100"
+                                    />
+                                    <div class="invalid-feedback">
+                                        Email es requerido y debe ser válido.
+                                    </div>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="edit-region-modal" class="form-label">Región <span class="text-danger">*</span></label>
+                                    <select class="form-select" id="edit-region-modal" name="region" required>
+                                        <option value="" disabled>Seleccione una región</option>
+                                        <option value="Región Metropolitana">Región Metropolitana</option>
+                                        <option value="Región de Valparaíso">Región de Valparaíso</option>
+                                        <option value="Región del Biobío">Región del Biobío</option>
+                                        <option value="Región de la Araucanía">Región de la Araucanía</option>
+                                        <option value="Región de Los Lagos">Región de Los Lagos</option>
+                                    </select>
+                                    <div class="invalid-feedback">
+                                        La región es requerida.
+                                    </div>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="edit-comuna-modal" class="form-label">Comuna <span class="text-danger">*</span></label>
+                                    <select class="form-select" id="edit-comuna-modal" name="comuna" required>
+                                        <option value="" disabled selected>Seleccione una comuna</option>
+                                    </select>
+                                    <div class="invalid-feedback">
+                                        La comuna es requerida.
+                                    </div>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="edit-tipo-modal" class="form-label">Tipo <span class="text-danger">*</span></label>
+                                    <select class="form-select" id="edit-tipo-modal" name="tipo" required readonly>
+                                        <option value="" disabled>Seleccione un tipo</option>
+                                        <option value="alumno">Alumno</option>
+                                        <option value="profesor">Profesor</option>
+                                    </select>
+                                    <input type="hidden" id="hidden-tipo-input" name="tipo" />
+                                    <div class="invalid-feedback">
+                                        El tipo es requerido.
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-buttons">
+                                <button type="submit" class="btn-save">Guardar Cambios</button>
+                                <button type="button" class="btn-cancel" data-bs-dismiss="modal">Cancelar</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="../../assets/js/regiones.js"></script>
+    <script src="../../assets/js/usuarios.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
