@@ -49,121 +49,130 @@
         </aside>
 
         <main class="container mt-4">
-            <h1 class="mb-4">Agregar Nuevo Producto</h1>
-            <form id="form-nuevo-producto" novalidate>
+            <div class="form-card">
+                <h2 class="form-title">Gestión de Productos</h2>
+                <form id="form-nuevo-producto" novalidate>
+                    <div class="form-grid">
+                        <div class="mb-3">
+                            <label for="nombre" class="form-label">Nombre <span class="text-danger">*</span></label>
+                            <input
+                                type="text"
+                                class="form-control"
+                                id="nombre"
+                                name="nombre"
+                                required
+                                maxlength="100"
+                            />
+                            <div class="invalid-feedback">
+                                El nombre es requerido y debe tener máximo 100 caracteres.
+                            </div>
+                        </div>
 
+                        <div class="mb-3">
+                            <label for="descripcion" class="form-label">Descripción</label>
+                            <textarea
+                                class="form-control"
+                                id="descripcion"
+                                name="descripcion"
+                                maxlength="500"
+                                rows="3"
+                            ></textarea>
+                            <div class="invalid-feedback">
+                                La descripción debe tener máximo 500 caracteres.
+                            </div>
+                        </div>
 
-                <div class="mb-3">
-                    <label for="nombre" class="form-label">Nombre <span class="text-danger">*</span></label>
-                    <input
-                        type="text"
-                        class="form-control"
-                        id="nombre"
-                        name="nombre"
-                        required
-                        maxlength="100"
-                    />
-                    <div class="invalid-feedback">
-                        El nombre es requerido y debe tener máximo 100 caracteres.
+                        <div class="mb-3 input-with-icon">
+                            <label for="precio" class="form-label">Precio <span class="text-danger">*</span></label>
+                            <input
+                                type="number"
+                                class="form-control"
+                                id="precio"
+                                name="precio"
+                                required
+                                min="0"
+                                step="0.01"
+                            />
+                            <i class="fas fa-dollar-sign input-icon"></i>
+                            <div class="invalid-feedback">
+                                El precio es requerido y debe ser un número mayor o igual a 0.
+                            </div>
+                        </div>
+
+                        <div class="mb-3 input-with-icon">
+                            <label for="stock" class="form-label">Stock <span class="text-danger">*</span></label>
+                            <input
+                                type="number"
+                                class="form-control"
+                                id="stock"
+                                name="stock"
+                                required
+                                min="0"
+                                step="1"
+                            />
+                            <i class="fas fa-boxes input-icon"></i>
+                            <div class="invalid-feedback">
+                                El stock es requerido y debe ser un número entero mayor o igual a 0.
+                            </div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="stockCritico" class="form-label">Stock Crítico</label>
+                            <input
+                                type="number"
+                                class="form-control"
+                                id="stockCritico"
+                                name="stockCritico"
+                                min="0"
+                                step="1"
+                            />
+                            <div class="invalid-feedback">
+                                El stock crítico debe ser un número entero mayor o igual a 0.
+                            </div>
+                        </div>
+
+                        <div class="mb-3 input-with-icon">
+                            <label for="categoria" class="form-label">Categoría <span class="text-danger">*</span></label>
+                            <select class="form-select" id="categoria" name="categoria" required>
+                                <option value="" selected disabled>Seleccione una categoría</option>
+                                <option value="Juegos de Mesa">Juegos de Mesa</option>
+                                <option value="Accesorios">Accesorios</option>
+                                <option value="Consolas">Consolas</option>
+                                <option value="Computadores Gamers">Computadores Gamers</option>
+                                <option value="Sillas Gamers">Sillas Gamers</option>
+                                <option value="Mouse">Mouse</option>
+                                <option value="Mousepad">Mousepad</option>
+                                <option value="Poleras Personalizadas">Poleras Personalizadas</option>
+                            </select>
+                            <i class="fas fa-tag input-icon"></i>
+                            <div class="invalid-feedback">
+                                La categoría es requerida.
+                            </div>
+                            <small class="form-help">La categoría debe ser seleccionada correctamente.</small>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="imagen" class="form-label">Imagen (URL)</label>
+                            <input
+                                type="url"
+                                class="form-control"
+                                id="imagen"
+                                name="imagen"
+                                placeholder="https://ejemplo.com/imagen.jpg"
+                            />
+                            <div class="invalid-feedback">
+                                Por favor ingrese una URL válida para la imagen.
+                            </div>
+                            <small class="form-help">La URL debe ser válida.</small>
+                        </div>
                     </div>
-                </div>
 
-                <div class="mb-3">
-                    <label for="descripcion" class="form-label">Descripción</label>
-                    <textarea
-                        class="form-control"
-                        id="descripcion"
-                        name="descripcion"
-                        maxlength="500"
-                        rows="3"
-                    ></textarea>
-                    <div class="invalid-feedback">
-                        La descripción debe tener máximo 500 caracteres.
+                    <div class="form-buttons">
+                        <button type="submit" class="btn-save">Agregar Producto</button>
+                        <a href="listado.html" class="btn-cancel">Cancelar</a>
                     </div>
-                </div>
-
-                <div class="mb-3">
-                    <label for="precio" class="form-label">Precio <span class="text-danger">*</span></label>
-                    <input
-                        type="number"
-                        class="form-control"
-                        id="precio"
-                        name="precio"
-                        required
-                        min="0"
-                        step="0.01"
-                    />
-                    <div class="invalid-feedback">
-                        El precio es requerido y debe ser un número mayor o igual a 0.
-                    </div>
-                </div>
-
-                <div class="mb-3">
-                    <label for="stock" class="form-label">Stock <span class="text-danger">*</span></label>
-                    <input
-                        type="number"
-                        class="form-control"
-                        id="stock"
-                        name="stock"
-                        required
-                        min="0"
-                        step="1"
-                    />
-                    <div class="invalid-feedback">
-                        El stock es requerido y debe ser un número entero mayor o igual a 0.
-                    </div>
-                </div>
-
-                <div class="mb-3">
-                    <label for="stockCritico" class="form-label">Stock Crítico</label>
-                    <input
-                        type="number"
-                        class="form-control"
-                        id="stockCritico"
-                        name="stockCritico"
-                        min="0"
-                        step="1"
-                    />
-                    <div class="invalid-feedback">
-                        El stock crítico debe ser un número entero mayor o igual a 0.
-                    </div>
-                </div>
-
-                <div class="mb-3">
-                    <label for="categoria" class="form-label">Categoría <span class="text-danger">*</span></label>
-                    <select class="form-select" id="categoria" name="categoria" required>
-                        <option value="" selected disabled>Seleccione una categoría</option>
-                        <option value="Juegos de Mesa">Juegos de Mesa</option>
-                        <option value="Accesorios">Accesorios</option>
-                        <option value="Consolas">Consolas</option>
-                        <option value="Computadores Gamers">Computadores Gamers</option>
-                        <option value="Sillas Gamers">Sillas Gamers</option>
-                        <option value="Mouse">Mouse</option>
-                        <option value="Mousepad">Mousepad</option>
-                        <option value="Poleras Personalizadas">Poleras Personalizadas</option>
-                    </select>
-                    <div class="invalid-feedback">
-                        La categoría es requerida.
-                    </div>
-                </div>
-
-                <div class="mb-3">
-                    <label for="imagen" class="form-label">Imagen (URL)</label>
-                    <input
-                        type="url"
-                        class="form-control"
-                        id="imagen"
-                        name="imagen"
-                        placeholder="https://ejemplo.com/imagen.jpg"
-                    />
-                    <div class="invalid-feedback">
-                        Por favor ingrese una URL válida para la imagen.
-                    </div>
-                </div>
-
-                <button type="submit" class="btn btn-primary">Agregar Producto</button>
-                <a href="listado.html" class="btn btn-secondary ms-2">Cancelar</a>
-            </form>
+                </form>
+            </div>
         </main>
     </div>
 

@@ -94,9 +94,9 @@ function renderizarTabla(productos = null) {
             <td>${p.precio.toLocaleString("es-CL", { style: "currency", currency: "CLP" })}</td>
             <td>${p.stock}</td>
             <td>
-                <a href="editar.html?id=${p.id}" class="btn btn-sm btn-warning me-1" title="Editar">
+                <button class="btn btn-sm btn-warning me-1" onclick="abrirModalEditar('${p.id}')" title="Editar">
                     <i class="fas fa-edit"></i>
-                </a>
+                </button>
                 <button class="btn btn-sm btn-danger" onclick="confirmarEliminar('${p.id}')" title="Eliminar">
                     <i class="fas fa-trash"></i>
                 </button>
@@ -245,7 +245,37 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     }
 
+    const formEditar = document.getElementById('form-editar-producto-modal');
+    if (formEditar) {
+        formEditar.addEventListener('submit', function(event) {
+            event.preventDefault();
+            if (!this.checkValidity()) {
+                this.classList.add('was-validated');
+                return;
+            }
 
+            const id = this.getAttribute('data-id');
+            const formData = new FormData(this);
+            const datosActualizados = {
+                nombre: formData.get('nombre'),
+                descripcion: formData.get('descripcion') || '',
+                precio: parseFloat(formData.get('precio')),
+                stock: parseInt(formData.get('stock')),
+                stockCritico: formData.get('stockCritico') ? parseInt(formData.get('stockCritico')) : 0,
+                categoria: formData.get('categoria'),
+                imagen: formData.get('imagen') || ''
+            };
+
+            editarProducto(id, datosActualizados);
+            alert("Producto actualizado correctamente.");
+
+            const modalElement = document.getElementById('editarProductoModal');
+            const modal = bootstrap.Modal.getInstance(modalElement);
+            modal.hide();
+
+            renderizarTabla();
+        });
+    }
 });
 
 function resetearProductos() {
@@ -256,3 +286,42 @@ function resetearProductos() {
         renderizarTabla();
     }
 }
+
+function abrirModalEditar(id) {
+    const productos = obtenerProductos();
+    const producto = productos.find(p => p.id === id);
+    if (!producto) return;
+
+    document.getElementById('edit-nombre-modal').value = producto.nombre;
+    document.getElementById('edit-descripcion-modal').value = producto.descripcion || '';
+    document.getElementById('edit-precio-modal').value = producto.precio;
+    document.getElementById('edit-stock-modal').value = producto.stock;
+    document.getElementById('edit-stockCritico-modal').value = producto.stockCritico || '';
+
+    const categoriaSelect = document.getElementById('edit-categoria-modal');
+    categoriaSelect.value = producto.categoria;
+    categoriaSelect.disabled = true;
+
+    let hiddenCategoriaInput = document.getElementById('hidden-categoria-input');
+    if (!hiddenCategoriaInput) {
+        hiddenCategoriaInput = document.createElement('input');
+        hiddenCategoriaInput.type = 'hidden';
+        hiddenCategoriaInput.id = 'hidden-categoria-input';
+        hiddenCategoriaInput.name = 'categoria';
+        const form = document.getElementById('form-editar-producto-modal');
+        form.appendChild(hiddenCategoriaInput);
+    }
+    hiddenCategoriaInput.value = producto.categoria;
+
+    document.getElementById('edit-imagen-modal').value = producto.imagen || '';
+
+    const form = document.getElementById('form-editar-producto-modal');
+    form.setAttribute('data-id', id);
+    form.classList.remove('was-validated');
+
+    const modalElement = document.getElementById('editarProductoModal');
+    const modal = new bootstrap.Modal(modalElement);
+    modal.show();
+}
+
+

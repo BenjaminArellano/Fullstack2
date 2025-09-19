@@ -96,8 +96,144 @@
 
 
     </main>
-<body>
-    
+
+    <!-- Modal Editar Producto -->
+    <div class="modal fade" id="editarProductoModal" tabindex="-1" aria-labelledby="editarProductoModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content bg-dark text-white">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="editarProductoModalLabel">Editar Producto</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-card">
+                        <form id="form-editar-producto-modal" novalidate>
+                            <div class="form-grid">
+                                <div class="mb-3">
+                                    <label for="edit-nombre-modal" class="form-label">Nombre <span class="text-danger">*</span></label>
+                                    <input
+                                        type="text"
+                                        class="form-control"
+                                        id="edit-nombre-modal"
+                                        name="nombre"
+                                        required
+                                        maxlength="100"
+                                    />
+                                    <div class="invalid-feedback">
+                                        El nombre es requerido y debe tener máximo 100 caracteres.
+                                    </div>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="edit-descripcion-modal" class="form-label">Descripción</label>
+                                    <textarea
+                                        class="form-control"
+                                        id="edit-descripcion-modal"
+                                        name="descripcion"
+                                        maxlength="500"
+                                        rows="3"
+                                    ></textarea>
+                                    <div class="invalid-feedback">
+                                        La descripción debe tener máximo 500 caracteres.
+                                    </div>
+                                </div>
+
+                                <div class="mb-3 input-with-icon">
+                                    <label for="edit-precio-modal" class="form-label">Precio <span class="text-danger">*</span></label>
+                                    <input
+                                        type="number"
+                                        class="form-control"
+                                        id="edit-precio-modal"
+                                        name="precio"
+                                        required
+                                        min="0"
+                                        step="0.01"
+                                    />
+                                    <i class="fas fa-dollar-sign input-icon"></i>
+                                    <div class="invalid-feedback">
+                                        El precio es requerido y debe ser un número mayor o igual a 0.
+                                    </div>
+                                </div>
+
+                                <div class="mb-3 input-with-icon">
+                                    <label for="edit-stock-modal" class="form-label">Stock <span class="text-danger">*</span></label>
+                                    <input
+                                        type="number"
+                                        class="form-control"
+                                        id="edit-stock-modal"
+                                        name="stock"
+                                        required
+                                        min="0"
+                                        step="1"
+                                    />
+                                    <i class="fas fa-boxes input-icon"></i>
+                                    <div class="invalid-feedback">
+                                        El stock es requerido y debe ser un número entero mayor o igual a 0.
+                                    </div>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="edit-stockCritico-modal" class="form-label">Stock Crítico</label>
+                                    <input
+                                        type="number"
+                                        class="form-control"
+                                        id="edit-stockCritico-modal"
+                                        name="stockCritico"
+                                        min="0"
+                                        step="1"
+                                    />
+                                    <div class="invalid-feedback">
+                                        El stock crítico debe ser un número entero mayor o igual a 0.
+                                    </div>
+                                </div>
+
+                                <div class="mb-3 input-with-icon">
+                                    <label for="edit-categoria-modal" class="form-label">Categoría <span class="text-danger">*</span></label>
+                                    <select class="form-select" id="edit-categoria-modal" name="categoria" required disabled>
+                                        <option value="" disabled>Seleccione una categoría</option>
+                                        <option value="Juegos de Mesa">Juegos de Mesa</option>
+                                        <option value="Accesorios">Accesorios</option>
+                                        <option value="Consolas">Consolas</option>
+                                        <option value="Computadores Gamers">Computadores Gamers</option>
+                                        <option value="Sillas Gamers">Sillas Gamers</option>
+                                        <option value="Mouse">Mouse</option>
+                                        <option value="Mousepad">Mousepad</option>
+                                        <option value="Poleras Personalizadas">Poleras Personalizadas</option>
+                                    </select>
+                                    <i class="fas fa-tag input-icon"></i>
+                                    <div class="invalid-feedback">
+                                        La categoría es requerida.
+                                    </div>
+                                    <small class="form-help">La categoría debe ser seleccionada correctamente.</small>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="edit-imagen-modal" class="form-label">Imagen (URL)</label>
+                                    <input
+                                        type="url"
+                                        class="form-control"
+                                        id="edit-imagen-modal"
+                                        name="imagen"
+                                        placeholder="https://ejemplo.com/imagen.jpg"
+                                    />
+                                    <div class="invalid-feedback">
+                                        Por favor ingrese una URL válida para la imagen.
+                                    </div>
+                                    <small class="form-help">La URL debe ser válida.</small>
+                                </div>
+                            </div>
+
+                            <div class="form-buttons">
+                                <button type="submit" class="btn-save">Guardar Cambios</button>
+                                <button type="button" class="btn-cancel" data-bs-dismiss="modal">Cancelar</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script src="../../assets/js/productos.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
