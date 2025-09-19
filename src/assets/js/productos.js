@@ -11,6 +11,33 @@ const productosIniciales = [
     { id: "PP001", categoria: "Poleras Personalizadas", nombre: "Polera Gamer Personalizada 'Level-Up'", precio: 14990, stock: 25 }
 ];
 
+const prefijos = {
+    "Juegos de Mesa": "JM",
+    "Accesorios": "AC",
+    "Consolas": "CO",
+    "Computadores Gamers": "CG",
+    "Sillas Gamers": "SG",
+    "Mouse": "MS",
+    "Mousepad": "MP",
+    "Poleras Personalizadas": "PP"
+};
+
+function generateId(categoria) {
+    const productos = obtenerProductos();
+    const prefijo = prefijos[categoria];
+    if (!prefijo) return null;
+    const idsCategoria = productos.filter(p => p.categoria === categoria).map(p => p.id);
+    let maxNum = 0;
+    idsCategoria.forEach(id => {
+        if (id.startsWith(prefijo)) {
+            const num = parseInt(id.slice(prefijo.length));
+            if (!isNaN(num) && num > maxNum) maxNum = num;
+        }
+    });
+    const nextNum = maxNum + 1;
+    return prefijo + nextNum.toString().padStart(3, '0');
+}
+
 if (!localStorage.getItem("productos")) {
     localStorage.setItem("productos", JSON.stringify(productosIniciales));
 }
@@ -44,14 +71,21 @@ function eliminarProducto(id) {
     guardarProductos(productos);
 }
 
-function renderizarTabla() {
+let productosFiltrados = [];
+let paginaActual = 1;
+const itemsPorPagina = 5;
+
+function renderizarTabla(productos = null) {
     const tabla = document.getElementById("tabla-productos");
-    if (!tabla) return; 
+    if (!tabla) return;
     tabla.innerHTML = "";
 
-    const productos = obtenerProductos();
+    const productosMostrar = productos || obtenerProductos();
+    const inicio = (paginaActual - 1) * itemsPorPagina;
+    const fin = inicio + itemsPorPagina;
+    const productosPaginados = productosMostrar.slice(inicio, fin);
 
-    productos.forEach(p => {
+    productosPaginados.forEach(p => {
         const fila = document.createElement("tr");
         fila.innerHTML = `
             <td>${p.id}</td>
@@ -60,12 +94,63 @@ function renderizarTabla() {
             <td>${p.precio.toLocaleString("es-CL", { style: "currency", currency: "CLP" })}</td>
             <td>${p.stock}</td>
             <td>
-                <a href="editar.html?id=${p.id}" class="btn btn-sm btn-warning">Editar</a>
-                <button class="btn btn-sm btn-danger" onclick="confirmarEliminar('${p.id}')">Eliminar</button>
+                <a href="editar.html?id=${p.id}" class="btn btn-sm btn-warning me-1" title="Editar">
+                    <i class="fas fa-edit"></i>
+                </a>
+                <button class="btn btn-sm btn-danger" onclick="confirmarEliminar('${p.id}')" title="Eliminar">
+                    <i class="fas fa-trash"></i>
+                </button>
             </td>
         `;
         tabla.appendChild(fila);
     });
+
+    renderizarPaginacion(productosMostrar.length);
+}
+
+function renderizarPaginacion(totalItems) {
+    const pagination = document.getElementById("pagination");
+    if (!pagination) return;
+    pagination.innerHTML = "";
+
+    const totalPaginas = Math.ceil(totalItems / itemsPorPagina);
+
+    if (totalPaginas <= 1) return;
+
+
+    const prevLi = document.createElement("li");
+    prevLi.className = `page-item ${paginaActual === 1 ? 'disabled' : ''}`;
+    prevLi.innerHTML = `<a class="page-link" href="#" onclick="cambiarPagina(${paginaActual - 1})">Anterior</a>`;
+    pagination.appendChild(prevLi);
+
+
+    for (let i = 1; i <= totalPaginas; i++) {
+        const li = document.createElement("li");
+        li.className = `page-item ${i === paginaActual ? 'active' : ''}`;
+        li.innerHTML = `<a class="page-link" href="#" onclick="cambiarPagina(${i})">${i}</a>`;
+        pagination.appendChild(li);
+    }
+
+
+    const nextLi = document.createElement("li");
+    nextLi.className = `page-item ${paginaActual === totalPaginas ? 'disabled' : ''}`;
+    nextLi.innerHTML = `<a class="page-link" href="#" onclick="cambiarPagina(${paginaActual + 1})">Siguiente</a>`;
+    pagination.appendChild(nextLi);
+}
+
+function cambiarPagina(pagina) {
+    paginaActual = pagina;
+    renderizarTabla(productosFiltrados.length > 0 ? productosFiltrados : null);
+}
+
+function filtrarProductos(query) {
+    const productos = obtenerProductos();
+    productosFiltrados = productos.filter(p =>
+        p.nombre.toLowerCase().includes(query.toLowerCase()) ||
+        p.categoria.toLowerCase().includes(query.toLowerCase())
+    );
+    paginaActual = 1;
+    renderizarTabla(productosFiltrados);
 }
 
 function confirmarEliminar(id) {
@@ -112,10 +197,27 @@ function mostrarModalProductoAgregado() {
     });
 }
 
+
+
 document.addEventListener("DOMContentLoaded", function() {
     renderizarTabla();
 
-    // Handle form submission for nuevo producto
+
+    const searchInput = document.getElementById('search-input');
+    if (searchInput) {
+        searchInput.addEventListener('input', function() {
+            const query = this.value.trim();
+            if (query === '') {
+                productosFiltrados = [];
+                paginaActual = 1;
+                renderizarTabla();
+            } else {
+                filtrarProductos(query);
+            }
+        });
+    }
+
+
     const form = document.getElementById('form-nuevo-producto');
     if (form) {
         form.addEventListener('submit', function(event) {
@@ -127,7 +229,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
             const formData = new FormData(this);
             const producto = {
-                id: formData.get('codigo'),
+                id: generateId(formData.get('categoria')),
                 nombre: formData.get('nombre'),
                 descripcion: formData.get('descripcion') || '',
                 precio: parseFloat(formData.get('precio')),
@@ -142,6 +244,8 @@ document.addEventListener("DOMContentLoaded", function() {
             }, 100);
         });
     }
+
+
 });
 
 function resetearProductos() {

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Agregar Nuevo Producto - Level Up Gamer</title>
+    <title>Editar Producto - Level Up Gamer</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="../../assets/css/admin.css" />
@@ -26,7 +26,7 @@
                     <a class="nav-link text-white active" href="./listado.html">Productos</a>
                     <ul class="nav flex-column ms-3">
                         <li><a class="nav-link text-white" href="./listado.html">• Listado</a></li>
-                        <li><a class="nav-link text-white active" href="./nuevo.html">• Nuevo Producto</a></li>
+                        <li><a class="nav-link text-white" href="./nuevo.html">• Nuevo Producto</a></li>
                     </ul>
                 </li>
 
@@ -49,16 +49,14 @@
         </aside>
 
         <main class="container mt-4">
-            <h1 class="mb-4">Agregar Nuevo Producto</h1>
-            <form id="form-nuevo-producto" novalidate>
-
-
+            <h1 class="mb-4">Editar Producto</h1>
+            <form id="form-editar-producto" novalidate>
                 <div class="mb-3">
-                    <label for="nombre" class="form-label">Nombre <span class="text-danger">*</span></label>
+                    <label for="edit-nombre" class="form-label">Nombre <span class="text-danger">*</span></label>
                     <input
                         type="text"
                         class="form-control"
-                        id="nombre"
+                        id="edit-nombre"
                         name="nombre"
                         required
                         maxlength="100"
@@ -69,10 +67,10 @@
                 </div>
 
                 <div class="mb-3">
-                    <label for="descripcion" class="form-label">Descripción</label>
+                    <label for="edit-descripcion" class="form-label">Descripción</label>
                     <textarea
                         class="form-control"
-                        id="descripcion"
+                        id="edit-descripcion"
                         name="descripcion"
                         maxlength="500"
                         rows="3"
@@ -83,11 +81,11 @@
                 </div>
 
                 <div class="mb-3">
-                    <label for="precio" class="form-label">Precio <span class="text-danger">*</span></label>
+                    <label for="edit-precio" class="form-label">Precio <span class="text-danger">*</span></label>
                     <input
                         type="number"
                         class="form-control"
-                        id="precio"
+                        id="edit-precio"
                         name="precio"
                         required
                         min="0"
@@ -99,11 +97,11 @@
                 </div>
 
                 <div class="mb-3">
-                    <label for="stock" class="form-label">Stock <span class="text-danger">*</span></label>
+                    <label for="edit-stock" class="form-label">Stock <span class="text-danger">*</span></label>
                     <input
                         type="number"
                         class="form-control"
-                        id="stock"
+                        id="edit-stock"
                         name="stock"
                         required
                         min="0"
@@ -115,11 +113,11 @@
                 </div>
 
                 <div class="mb-3">
-                    <label for="stockCritico" class="form-label">Stock Crítico</label>
+                    <label for="edit-stockCritico" class="form-label">Stock Crítico</label>
                     <input
                         type="number"
                         class="form-control"
-                        id="stockCritico"
+                        id="edit-stockCritico"
                         name="stockCritico"
                         min="0"
                         step="1"
@@ -130,9 +128,9 @@
                 </div>
 
                 <div class="mb-3">
-                    <label for="categoria" class="form-label">Categoría <span class="text-danger">*</span></label>
-                    <select class="form-select" id="categoria" name="categoria" required>
-                        <option value="" selected disabled>Seleccione una categoría</option>
+                    <label for="edit-categoria" class="form-label">Categoría <span class="text-danger">*</span></label>
+                    <select class="form-select" id="edit-categoria" name="categoria" required>
+                        <option value="" disabled>Seleccione una categoría</option>
                         <option value="Juegos de Mesa">Juegos de Mesa</option>
                         <option value="Accesorios">Accesorios</option>
                         <option value="Consolas">Consolas</option>
@@ -148,11 +146,11 @@
                 </div>
 
                 <div class="mb-3">
-                    <label for="imagen" class="form-label">Imagen (URL)</label>
+                    <label for="edit-imagen" class="form-label">Imagen (URL)</label>
                     <input
                         type="url"
                         class="form-control"
-                        id="imagen"
+                        id="edit-imagen"
                         name="imagen"
                         placeholder="https://ejemplo.com/imagen.jpg"
                     />
@@ -161,7 +159,7 @@
                     </div>
                 </div>
 
-                <button type="submit" class="btn btn-primary">Agregar Producto</button>
+                <button type="submit" class="btn btn-primary">Guardar Cambios</button>
                 <a href="listado.html" class="btn btn-secondary ms-2">Cancelar</a>
             </form>
         </main>
@@ -169,5 +167,55 @@
 
     <script src="../../assets/js/productos.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+
+        const urlParams = new URLSearchParams(window.location.search);
+        const productId = urlParams.get('id');
+        if (productId) {
+            const productos = JSON.parse(localStorage.getItem("productos")) || [];
+            const producto = productos.find(p => p.id === productId);
+            if (producto) {
+                document.getElementById('edit-nombre').value = producto.nombre;
+                document.getElementById('edit-descripcion').value = producto.descripcion || '';
+                document.getElementById('edit-precio').value = producto.precio;
+                document.getElementById('edit-stock').value = producto.stock;
+                document.getElementById('edit-stockCritico').value = producto.stockCritico || '';
+                document.getElementById('edit-categoria').value = producto.categoria;
+                document.getElementById('edit-imagen').value = producto.imagen || '';
+                document.getElementById('form-editar-producto').setAttribute('data-id', productId);
+            }
+        }
+
+
+        document.getElementById('form-editar-producto').addEventListener('submit', function(event) {
+            event.preventDefault();
+            if (!this.checkValidity()) {
+                this.classList.add('was-validated');
+                return;
+            }
+
+            const id = this.getAttribute('data-id');
+            const formData = new FormData(this);
+            const datosActualizados = {
+                nombre: formData.get('nombre'),
+                descripcion: formData.get('descripcion') || '',
+                precio: parseFloat(formData.get('precio')),
+                stock: parseInt(formData.get('stock')),
+                stockCritico: formData.get('stockCritico') ? parseInt(formData.get('stockCritico')) : 0,
+                categoria: formData.get('categoria'),
+                imagen: formData.get('imagen') || ''
+            };
+
+
+            const productos = JSON.parse(localStorage.getItem("productos")) || [];
+            const indice = productos.findIndex(p => p.id === id);
+            if (indice !== -1) {
+                productos[indice] = { ...productos[indice], ...datosActualizados };
+                localStorage.setItem("productos", JSON.stringify(productos));
+                alert("Producto actualizado correctamente.");
+                window.location.href = 'listado.html';
+            }
+        });
+    </script>
 </body>
 </html>
