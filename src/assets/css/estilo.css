@@ -32,9 +32,6 @@ main {
     margin-top: 80px; /* deja espacio por el navbar fijo */
 }
 
-footer {
-    grid-area: footer;
-}
 
 .carousel {
     width: 250%;  /* antes estaba en 120%, lo cual lo desbordaba */
@@ -81,8 +78,9 @@ footer {
     background-color:#39FF14;
     display: flex;
     padding-top: 20px;
-    padding-bottom: 20px;
+    
     justify-content: flex-end;
+    height: 80px;
 }
 
 footer input{
