@@ -1,10 +1,10 @@
 // Array de usuarios iniciales para poblar la aplicación al cargar por primera vez
 const usuariosIniciales = [
-    { id: 1, rut: "12345678-9", nombre: "Juan Pérez", email: "juan@duoc.cl", region: "Región Metropolitana", comuna: "Santiago", tipo: "Cliente" },
-    { id: 2, rut: "98765432-1", nombre: "María González", email: "maria@profesor.duoc.cl", region: "Región de Valparaíso", comuna: "Viña del Mar", tipo: "Cliente" },
-    { id: 3, rut: "11223344-5", nombre: "Carlos López", email: "carlos@gmail.com", region: "Región del Biobío", comuna: "Concepción", tipo: "Cliente" },
-    { id: 4, rut: "55667788-0", nombre: "Ana Rodríguez", email: "ana@duoc.cl", region: "Región Metropolitana", comuna: "Providencia", tipo: "Cliente" },
-    { id: 5, rut: "99887766-4", nombre: "Pedro Martínez", email: "pedro@profesor.duoc.cl", region: "Región de Los Lagos", comuna: "Puerto Montt", tipo: "Cliente" }
+    { id: 1, rut: "12345678-9", nombre: "Juan", apellidos: "Pérez", email: "juan@duoc.cl", fechaNacimiento: "1990-05-15", region: "Región Metropolitana", comuna: "Santiago", direccion: "Av. Providencia 123", tipo: "Cliente" },
+    { id: 2, rut: "98765432-1", nombre: "María", apellidos: "González", email: "maria@profesor.duoc.cl", fechaNacimiento: "1985-08-22", region: "Región de Valparaíso", comuna: "Viña del Mar", direccion: "Calle Los Alamos 456", tipo: "Cliente" },
+    { id: 3, rut: "11223344-5", nombre: "Carlos", apellidos: "López", email: "carlos@gmail.com", fechaNacimiento: "1992-12-03", region: "Región del Biobío", comuna: "Concepción", direccion: "Av. Los Carrera 789", tipo: "Cliente" },
+    { id: 4, rut: "55667788-0", nombre: "Ana", apellidos: "Rodríguez", email: "ana@duoc.cl", fechaNacimiento: "1988-03-10", region: "Región Metropolitana", comuna: "Providencia", direccion: "Calle Nueva 321", tipo: "Cliente" },
+    { id: 5, rut: "99887766-4", nombre: "Pedro", apellidos: "Martínez", email: "pedro@profesor.duoc.cl", fechaNacimiento: "1995-07-18", region: "Región de Los Lagos", comuna: "Puerto Montt", direccion: "Av. Costanera 654", tipo: "Cliente" }
 ];
 
 // Inicializar localStorage con usuarios por defecto si no existe
@@ -128,9 +128,12 @@ function renderizarTabla(usuarios = null) {
             <td>${u.id}</td>
             <td>${u.rut}</td>
             <td>${u.nombre}</td>
+            <td>${u.apellidos || ''}</td>
             <td>${u.email}</td>
+            <td>${u.fechaNacimiento || ''}</td>
             <td>${u.region}</td>
             <td>${u.comuna}</td>
+            <td>${u.direccion || ''}</td>
             <td>
                 <button class="btn btn-sm btn-warning me-1" onclick="abrirModalEditar(${u.id})" title="Editar">
                     <i class="fas fa-edit"></i>
@@ -184,11 +187,12 @@ function cambiarPagina(pagina) {
     renderizarTabla(usuariosFiltrados.length > 0 ? usuariosFiltrados : null);
 }
 
-// Función para filtrar usuarios por nombre o email
+// Función para filtrar usuarios por nombre, apellidos o email
 function filtrarUsuarios(query) {
     const usuarios = obtenerUsuarios();
     usuariosFiltrados = usuarios.filter(u =>
         u.nombre.toLowerCase().includes(query.toLowerCase()) ||
+        (u.apellidos && u.apellidos.toLowerCase().includes(query.toLowerCase())) ||
         u.email.toLowerCase().includes(query.toLowerCase())
     );
     paginaActual = 1; // Resetear a primera página al filtrar
@@ -304,9 +308,12 @@ document.addEventListener("DOMContentLoaded", function() {
                 id: generateUserId(),
                 rut: rut,
                 nombre: formData.get('nombre'),
+                apellidos: formData.get('apellidos'),
                 email: email,
+                fechaNacimiento: formData.get('fechaNacimiento'),
                 region: formData.get('region'),
                 comuna: formData.get('comuna'),
+                direccion: formData.get('direccion'),
                 tipo: formData.get('tipo')
             };
 
@@ -352,9 +359,12 @@ document.addEventListener("DOMContentLoaded", function() {
             const datosActualizados = {
                 rut: rut,
                 nombre: formData.get('nombre'),
+                apellidos: formData.get('apellidos'),
                 email: email,
+                fechaNacimiento: formData.get('fechaNacimiento'),
                 region: formData.get('region'),
                 comuna: formData.get('comuna'),
+                direccion: formData.get('direccion'),
                 tipo: formData.get('tipo')
             };
 
@@ -390,7 +400,10 @@ function abrirModalEditar(id) {
     // Llenar los campos del modal con los datos del usuario
     document.getElementById('edit-rut-modal').value = usuario.rut;
     document.getElementById('edit-nombre-modal').value = usuario.nombre;
+    document.getElementById('edit-apellidos-modal').value = usuario.apellidos || '';
     document.getElementById('edit-email-modal').value = usuario.email;
+    document.getElementById('edit-fechaNacimiento-modal').value = usuario.fechaNacimiento || '';
+    document.getElementById('edit-direccion-modal').value = usuario.direccion || '';
 
     const regionSelect = document.getElementById('edit-region-modal');
     regionSelect.value = usuario.region;

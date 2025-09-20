@@ -73,7 +73,7 @@
         </div>
 
         <div class="mb-3">
-            <input type="text" class="form-control" id="search-input" placeholder="Buscar por nombre o email...">
+            <input type="text" class="form-control" id="search-input" placeholder="Buscar por nombre, apellidos o email...">
         </div>
 
         <table class="gamer-table">
@@ -82,9 +82,12 @@
                     <th>ID</th>
                     <th>RUT</th>
                     <th>Nombre</th>
+                    <th>Apellidos</th>
                     <th>Email</th>
+                    <th>Fecha Nacimiento</th>
                     <th>Región</th>
                     <th>Comuna</th>
+                    <th>Dirección</th>
                     <th>Acciones</th>
                 </tr>
             </thead>
@@ -150,6 +153,21 @@
                                 </div>
 
                                 <div class="mb-3">
+                                    <label for="edit-apellidos-modal" class="form-label">Apellidos <span class="text-danger">*</span></label>
+                                    <input
+                                        type="text"
+                                        class="form-control"
+                                        id="edit-apellidos-modal"
+                                        name="apellidos"
+                                        required
+                                        maxlength="100"
+                                    />
+                                    <div class="invalid-feedback">
+                                        Los apellidos son requeridos y deben tener máximo 100 caracteres.
+                                    </div>
+                                </div>
+
+                                <div class="mb-3">
                                     <label for="edit-email-modal" class="form-label">Email <span class="text-danger">*</span></label>
                                     <input
                                         type="email"
@@ -161,6 +179,20 @@
                                     />
                                     <div class="invalid-feedback">
                                         Email es requerido y debe ser válido.
+                                    </div>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="edit-fechaNacimiento-modal" class="form-label">Fecha Nacimiento</label>
+                                    <input
+                                        type="date"
+                                        class="form-control"
+                                        id="edit-fechaNacimiento-modal"
+                                        name="fechaNacimiento"
+                                        readonly
+                                    />
+                                    <div class="invalid-feedback">
+                                        Fecha de nacimiento inválida.
                                     </div>
                                 </div>
 
@@ -186,6 +218,21 @@
                                     </select>
                                     <div class="invalid-feedback">
                                         La comuna es requerida.
+                                    </div>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="edit-direccion-modal" class="form-label">Dirección <span class="text-danger">*</span></label>
+                                    <input
+                                        type="text"
+                                        class="form-control"
+                                        id="edit-direccion-modal"
+                                        name="direccion"
+                                        required
+                                        maxlength="300"
+                                    />
+                                    <div class="invalid-feedback">
+                                        La dirección es requerida y debe tener máximo 300 caracteres.
                                     </div>
                                 </div>
 
