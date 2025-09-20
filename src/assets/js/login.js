@@ -10,7 +10,7 @@ loginForm.addEventListener("submit", (event)=>{
         const payload = {
             email,
             rol: "usuario",
-            exp: Date.now() + (60000/2)
+            exp: Date.now() + (60*1000/2)
         }
         //Ver el tiempo del TOKEN, no olvidar!
         //Ahora crearemos el token con su información(payload)
@@ -23,7 +23,7 @@ loginForm.addEventListener("submit", (event)=>{
         const payload = {
             email,
             rol: "usuario",
-            exp: Date.now() + (60000/2)
+            exp: Date.now() + 1 * 60 * 1000
         }
         //Ver el tiempo del TOKEN, no olvidar!
         //Ahora crearemos el token con su información(payload)
