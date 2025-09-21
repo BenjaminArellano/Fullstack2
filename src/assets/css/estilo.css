@@ -1,12 +1,8 @@
 body {
     background-color:#000000;
-    display: grid;
-    grid-template-areas: 
-        "nav"
-        "body"
-        "footer";
-    grid-template-columns: 1fr;
-    grid-template-rows: auto 1fr auto;
+    display: flex;
+    flex-direction: column;
+
     gap: 20px;
     min-height: 100vh;
     padding-top:100px;
@@ -77,13 +73,34 @@ main {
 footer {
     background-color:#39FF14;
     display: flex;
-    padding-top: 20px;
-    justify-content: flex-end;
-    height: 80px;
-    width: 100%;
-    position: fixed;
-     bottom: 0;
-    left: 0;
+    margin-top: auto;
+    justify-content: space-between;
+    width: 100%; 
+    grid-area: footer;
+    text-align: center;
+    padding: 1rem;
+    flex-wrap: wrap;
+}
+
+.logo_footer{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center; 
+    height: 70px;
+    width: auto;
+}
+
+.contacto{
+    display: flex;
+    text-align: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+.contacto img{
+    height: 50px;
+    width: 50px;
+    border-radius: 10px;
 }
 
 footer input{
@@ -206,6 +223,7 @@ footer input{
     gap: 20px;
     align-items: center;
 }
+
 .ele_prod{
     flex: 1 1 30%;
     min-width: 200px;
@@ -241,6 +259,7 @@ footer input{
     align-items: center;
     gap: 20px;
     display: flex;
+    flex-wrap: wrap;
 }
 
 
