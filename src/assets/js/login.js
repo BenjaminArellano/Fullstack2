@@ -10,13 +10,13 @@ loginForm.addEventListener("submit", (event)=>{
         const payload = {
             email,
             rol: "usuario",
-            exp: Date.now() + (60*1000/2)
+            exp: Date.now() + 10 * 60 * 1000
         }
         //Ver el tiempo del TOKEN, no olvidar!
         //Ahora crearemos el token con su información(payload)
         const token = btoa( JSON.stringify(payload) )
         localStorage.setItem("token",token)
-        window.location.href = "producto.html"
+        window.location.href = "tienda.html"
     }
 
     if(email==="admin@gmail.com" && password==="2"){
