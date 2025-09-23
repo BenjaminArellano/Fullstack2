@@ -1,15 +1,14 @@
-// Vamos a validar si existe un token:
 const token = localStorage.getItem("token")
 
 if(!token){ 
     alert("Debe iniciar sesión.")
-    window.location.href = "../../login.html"
+    window.location.href = "login.html"
 } else{
     const payload = JSON.parse(atob(token))
     if(Date.now() > payload.exp){
         localStorage.removeItem("token")
         alert("Tu sesión ha expirado.")
-        window.location.href = "../../login.html"
+        window.location.href = "login.html"
     }
 }
 

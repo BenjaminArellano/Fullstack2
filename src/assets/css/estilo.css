@@ -324,3 +324,26 @@ footer input{
     border-radius: 50%;       /* opcional: redondea el botón */
     background-size: 100%, 100%; /* ajusta el tamaño del ícono */
 }
+
+.listado{
+    background-color: #39FF14;
+    text-align: center;
+}
+
+.compras{
+    background-color: #1E90FF;
+    text-align: center;
+    display: flex;
+}
+
+.compras table{
+    justify-content: space-between;
+    width: 100%;
+    border: 2cm;
+}
+
+.zona_bot{
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+}
