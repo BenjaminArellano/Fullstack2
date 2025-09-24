@@ -1,11 +1,13 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700&family=Roboto:wght@300;400;700&display=swap');
 body {
     background-color:#000000;
     display: flex;
     flex-direction: column;
-
+    font-family:'Roboto';
     gap: 20px;
     min-height: 100vh;
     padding-top:100px;
+    color: white;
 }
 
 .carrusel_prin{
@@ -14,9 +16,12 @@ body {
     display: flex;
 }
 
+
 .navbar{
-    background-color: #39FF14;
+    background-color: #1E90FF;
     border: 2px solid rgb(0, 0, 0); 
+    font-family: 'Orbitron';
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
 }
 
 .navbar img{ 
@@ -71,7 +76,7 @@ main {
 }
 
 footer {
-    background-color:#39FF14;
+    background-color:#1E90FF;
     display: flex;
     margin-top: auto;
     justify-content: space-between;
@@ -80,6 +85,7 @@ footer {
     text-align: center;
     padding: 1rem;
     flex-wrap: wrap;
+    box-shadow: 0 -4px 6px rgba(0, 0, 0, 0.925);
 }
 
 .logo_footer{
@@ -111,7 +117,7 @@ footer input{
 }
 
 .log-reg{
-    background-color: #39FF14;
+    background-color: #1E90FF;
     text-align: center;
     display: flex;
     flex-direction: column;
@@ -140,22 +146,23 @@ footer input{
     
     border-radius: 10px;
     color: #000000;
-    background-color: #1E90FF;
-    padding: 10px;   
-     
+    background-color: #39FF14;
+    padding: 10px; 
+    margin-bottom: 10px;   
 }
 .registro:hover{
     background-color: red;
 }
 
 .titulo-noticia{
-    background-color: #39FF14;
+    background-color: #1E90FF;
     margin: 10px;
     text-align: center;
+    font-family:'Orbitron';
 }
 
 .noticia{
-    background-color: #39FF14;
+    background-color: #1E90FF;
     margin-bottom: 10px;
     display: flex;
     justify-content: space-between;
@@ -171,15 +178,17 @@ footer input{
 .noticia .texto-noticia{
     max-width: 60%;
     text-align: center;
+    font-family:'Orbitron';
 }
 
 .noticia .botonnoticia{
-    background-color: rgb(79, 37, 228);
+    background-color:#39FF14;
     border-radius: 10px;
+    margin-bottom:10 px 
 }
 
 .mensaje{
-    background-color: #39FF14;
+    background-color: #1E90FF;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -197,19 +206,31 @@ footer input{
     width: 300px;
 }
 
+.titulo{
+    font-family:'Orbitron';
+    color: white;
+}
+
 .cuadro{
     width: 300px;
     height: auto;
     margin-bottom: 10px;
+    border-radius: 10px;
+}
+
+.cuadro_contenido{
+    resize: vertical;
+    border-radius: 10px;
+    width: 300px;
 }
 
 .boton_envio{
     border-radius: 10px;
-    background-color: #1E90FF;
+    background-color:#39FF14;
     margin-bottom: 15px;
 }
 .list_prod{
-    background-color: #39FF14;
+    background-color: #1E90FF;
     text-align: center;
     align-items: center;
     margin-bottom: 10px;
@@ -229,11 +250,12 @@ footer input{
     min-width: 200px;
     max-width: 250px;
     text-align: center;
-    background-color: #39FF14;
+    background-color: #1E90FF;
     display: flex;
     flex-direction: column;
     margin: 5px;
     align-items: center;
+    border-radius: 15px;
 }
 
 .ele_prod img{
@@ -244,15 +266,35 @@ footer input{
 
 .agregar{
     
-    background-color: #1E90FF;
+    background-color:white;
+    border-radius: 10px;
+    min-width: 200px;
+    text-align: center;
+    margin-bottom: 10px;
+
+}
+
+.ver_detalle{
+    
+    background-color: white;
     border-radius: 10px;
     min-width: 200px;
     text-align: center;
     margin-bottom: 10px;
 }
 
-.contenedor{
+.ver_detalle:hover {
     background-color: #39FF14;
+    transform: scale(1.05); 
+}
+
+.agregar:hover {
+    background-color: #39FF14;
+    transform: scale(1.05); 
+}
+
+.contenedor{
+    background-color: #1E90FF;
     text-align: center;
     display: flex;
     justify-content: space-around;
@@ -288,7 +330,7 @@ footer input{
 
 .carrusel_prin{
     margin-top: 10px;
-    background-color: #39FF14;
+    background-color: #1E90FF;
     display: flex;
     width: auto;
     justify-content: center;
@@ -300,13 +342,13 @@ footer input{
 }
 
 .card-body{
-    background-color: #1E90FF;
+    background-color: #39FF14;
 }
 
 .contenedor_vertical{
     display: flex;
     flex-direction: column;
-    background-color: #39FF14;
+    background-color: #1E90FF;
     align-items: center;
     text-align: center;
     margin: 10px;
@@ -326,14 +368,16 @@ footer input{
 }
 
 .listado{
-    background-color: #39FF14;
+    background-color: #1E90FF;
     text-align: center;
+    font-family:'Orbitron';
 }
 
 .compras{
-    background-color: #1E90FF;
+    background-color: red;
     text-align: center;
     display: flex;
+
 }
 
 .compras table{
@@ -346,4 +390,80 @@ footer input{
     display: flex;
     justify-content: center;
     gap: 50px;
+}
+
+.modal-content{
+    background-color: #1E90FF;
+    display: flex;
+    color: white;
+}
+
+
+.cuadro_nosotros{
+    background-color:#1E90FF;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+}
+
+.cuadro_nosotros img{
+    width: 250px;
+    height: auto;
+}
+
+.texto_nosotros{
+    margin: 40px;
+}
+
+.compras {
+    width: 100%;
+    background-color: var(--gray-very-dark);
+    border-radius: 12px;
+    border: 1px solid var(--border-dark);
+    overflow: hidden;
+    box-shadow: 0 0 20px rgba(30, 144, 255, 0.3);
+}
+
+.compras thead th {
+    background-color: var(--blue-electric);
+    color: #000000;
+    font-family: 'Orbitron', sans-serif;
+    font-weight: 700;
+    text-transform: uppercase;
+    padding: 15px 12px;
+    border: none;
+    text-align: center;
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+}
+
+.compras tbody tr:nth-child(odd) {
+    background-color: #000000;
+}
+
+.compras tbody tr:nth-child(even) {
+    background-color: var(--gray-alternate);
+}
+
+.compras tbody tr:hover {
+    background-color: #1a1a1a;
+    transition: all 0.3s ease;
+}
+
+.compras tbody tr:hover td {
+    color: var(--green-neon);
+    transition: color 0.3s ease;
+}
+
+.compras td {
+    color: var(--text-secondary);
+    font-family: 'Roboto', sans-serif;
+    padding: 12px;
+    border: none;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.compras tbody tr {
+    transition: background-color 0.3s ease;
 }

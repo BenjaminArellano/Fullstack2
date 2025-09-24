@@ -6,27 +6,25 @@ loginForm.addEventListener("submit", (event)=>{
     const email = document.getElementById("email").value
     const password = document.getElementById("password").value
     
-    if(email==="ejem@gmail.com" && password==="1"){
+    if(email==="cliente@gmail.com" && password==="Clientes1"){
         const payload = {
             email,
             rol: "usuario",
-            exp: Date.now() + 100 * 60 * 1000
+            exp: Date.now() + 10 * 60 * 1000
         }
-        //Ver el tiempo del TOKEN, no olvidar!
-        //Ahora crearemos el token con su información(payload)
+        
         const token = btoa( JSON.stringify(payload) )
         localStorage.setItem("token",token)
         window.location.href = "tienda.html"
     }
 
-    if(email==="admin@gmail.com" && password==="2"){
+    if(email==="admin@gmail.com" && password==="Administrador1"){
         const payload = {
             email,
-            rol: "usuario",
-            exp: Date.now() + 1 * 60 * 1000
+            rol: "admin",
+            exp: Date.now() + 10 * 60 * 1000
         }
-        //Ver el tiempo del TOKEN, no olvidar!
-        //Ahora crearemos el token con su información(payload)
+        
         const token = btoa( JSON.stringify(payload) )
         localStorage.setItem("token",token)
         window.location.href = "##########################################"//Aqui se pone la ruta de la pagina de inicio de admin

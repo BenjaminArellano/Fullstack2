@@ -10,16 +10,13 @@
 <body>
         <nav class="navbar fixed-top">
         <div class="container-fluid">
-            <a id="logolink" class="navbar-brand" href=""><img src="../assets/img/Captura.PNG" alt=""></a>
+            <a id="logolink" class="navbar-brand" href=""><img src="../assets/img/logo_levelup.png" alt=""></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                 aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a class="nav-link" href="../tienda/tienda.html">Home</a>
-                    </li>
                     <li class="nav-item">
                         <a class="nav-link" href="../tienda/producto.html">Productos</a>
                     </li>
@@ -45,34 +42,31 @@
     </div>
 <div class="noticia">
     <div class="texto-noticia">
-    <h1>noticia 1</h1>
-    <h6>Aqui habra un texto sobre la noticia</h6>
+    <h1>Razer anuncia los BlackShark V3 Pro, sus auriculares con cancelación de ruido: 'hemos perfeccionado lo esencial'</h1>
     <div>
        <button class="botonnoticia" onclick="window.location.href='../tienda/noticia.html'">Ver</button>
     </div>
     </div>
     <div>
-        <img src="../assets/img/pro.png" alt="">
+        <img src="../assets/img/imgnoticia1.jpg" alt="">
     </div>
 </div>
 
 <div class="noticia">
     <div class="texto-noticia">
-    <h1>noticia 1</h1>
-    <h6>Aqui habra un texto sobre la noticia</h6>
+    <h1>A partir de ahora conseguir trofeos en PS5 y PS4 te permitirá comprar productos de juegos como Ghost of Tsushima</h1>
     <div>
-        <button class="botonnoticia">Ver</button>
+        <button class="botonnoticia" onclick="window.location.href='../tienda/noticia2.html'">Ver</button>
     </div>
     </div>
     <div>
-        <img src="../assets/img/gabinete.jpg" alt="">
+        <img src="../assets/img/imgnoticia2.jpg" alt="">
     </div>
 </div>
 
 <div class="noticia">
     <div class="texto-noticia">
-    <h1>noticia 1</h1>
-    <h6>Aqui habra un texto sobre la noticia</h6>
+    <h1>Vea las novedades de Level-up gamer </h1>
     <div>
         <button class="botonnoticia"> Ver</button>
     </div>
@@ -85,7 +79,7 @@
 
 
       <footer>
-        <img src="../assets/img/ChatGPT Image 17 sept 2025, 00_37_19.png" class="logo_footer">
+        <img src="../assets/img/logo_levelup.png" class="logo_footer">
         <div class="contacto">
           <img src="../assets/img/insta.png" alt="">
           <h6>LevelUp@oficial</h6>
@@ -95,7 +89,9 @@
           <h6>LevelUp@gmail.com</h6>
         </div>
         <div>
-        <input type="email" placeholder="Enter Email"></input>
+        <input type="email"  pattern="^[a-zA-Z0-9._%+-]+@(gmail.com|duocuc.cl|profesor.duoc.cl)$"
+       title="Debe ser un correo @gmail.com, @duocuc.cl o @profesor.duoc.cl"
+       required placeholder="Enter Email"></input>
         <button type="button" class="btn btn-danger">Enviar</button>
         </div>
       </footer>

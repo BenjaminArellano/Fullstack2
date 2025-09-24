@@ -4,9 +4,9 @@ if (logoLink) {
     const token = localStorage.getItem('token');
 
     if (token) {
-        logoLink.href = '/src/tienda/tienda.html'; 
+        logoLink.href = '../../src/tienda/tienda.html'; 
     } else {
-        logoLink.href = '/index.html';
+        logoLink.href = '../../index.html';
     }
 }
 

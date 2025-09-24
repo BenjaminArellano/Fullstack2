@@ -1,5 +1,3 @@
-// Archivo: ../assets/js/carrito.js
-
 document.addEventListener("DOMContentLoaded", () => {
   const tablaCarrito = document.querySelector("#tablaCarrito tbody");
   const totalElemento = document.getElementById("total");
@@ -31,11 +29,19 @@ document.addEventListener("DOMContentLoaded", () => {
 
   renderCarrito();
 
-  // Evento para limpiar el carrito
+
   btnLimpiar.addEventListener("click", () => {
     localStorage.removeItem("carrito");
     carrito = [];
     renderCarrito();
-    alert("El carrito ha sido vaciado");
+    alert("Se ha vaciado el carrito con exito");
+  });
+
+
+  btnCompra.addEventListener("click", () => {
+    localStorage.removeItem("carrito");
+    carrito = [];
+    renderCarrito();
+    alert("Se ha comprado con exito");
   });
 });
