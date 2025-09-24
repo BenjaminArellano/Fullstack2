@@ -1,17 +1,17 @@
+<!DOCTYPE html>
 <html lang="es">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
-    <link rel="stylesheet" href="src/assets/css/estilo.css">
+    <title>Productos</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+  <link rel="stylesheet" href="../assets/css/estilo.css">
 </head>
-
 <body>
     <nav class="navbar fixed-top">
         <div class="container-fluid">
-            <a id="logolink" class="navbar-brand" href=""><img src="src/assets/img/logo_levelup.png" alt=""></a>
+            <a id="logolink" class="navbar-brand" href=""><img src="../assets/img/logo_levelup.png" alt=""></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                 aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -19,96 +19,44 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link"  href="src/tienda/Login.html">Iniciar sesión</a>
+                        <a class="nav-link disabled" aria-disabled="true" href="../tienda/producto.html">Productos</a>
+                    </li>
+                     <li class="nav-item">
+                        <a class="nav-link" href="../tienda/carrito.html">Carrito</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link"  href="src/tienda/registro.html">Registarse</a>
+                        <a class="nav-link" href="../tienda/nosotros.html">Nosotros</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="src/tienda/producto.html">Productos</a>
+                        <a class="nav-link" href="../tienda/blog.html">Blog</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="src/tienda/carrito.html">Carrito</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="src/tienda/nosotros.html">Nosotros</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="src/tienda/blog.html">Blog</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="src/tienda/contacto.html">Contacto</a>
+                        <a class="nav-link" href="../tienda/contacto.html">Contacto</a>
                     </li>
                 </ul>
             </div>
         </div>
     </nav>
-
-    <div class="carrusel_prin">
-        <div id="carouselExampleCaptions" class="carousel">
-            <div class="carousel-indicators">
-                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active"
-                    aria-current="true" aria-label="Slide 1"></button>
-                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1"
-                    aria-label="Slide 2"></button>
-                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2"
-                    aria-label="Slide 3"></button>
-            </div>
-            <div class="carousel-inner">
-                <div class="carousel-item active">
-                    <img src="src/assets/img/imgnoticia1.jpg" class="d-block w-100" alt="...">
-                    <div class="carousel-caption d-none d-md-block">
-                        <h5>Nuevos modelos</h5>
-                        <p>Razer anuncia los BlackShark V3 Pro</p>
-                    </div>
-                </div>
-                <div class="carousel-item">
-                    <img src="src/assets/img/imgnoticia2_complemento2.jpg" class="d-block w-100" alt="...">
-                    <div class="carousel-caption d-none d-md-block">
-                        <h5>Ahora se premian los logros</h5>
-                        <p>Sony abrió una tienda de merchandising exclusiva</p>
-                    </div>
-                </div>
-                <div class="carousel-item">
-                    <img src="src/assets/img/polera_per.png" class="d-block w-100" alt="...">
-                    <div class="carousel-caption d-none d-md-block">
-                        <h5>Nuevas poleras</h5>
-                        <p>Compra ya tu polera personalizada</p>
-                    </div>
-                </div>
-            </div>
-            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions"
-                data-bs-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Previous</span>
-            </button>
-            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions"
-                data-bs-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Next</span>
-            </button>
-        </div>
-    </div>
-
-    <div class="list_prod">
+      <div class="list_prod">
         <h1 class="titulo">Productos</h1>
-    </div>
+        </div>
+
  <div class="distribucion">
         <div class="ele_prod">
-            <div><img src="src/assets/img/qatan.jpg"></div>
+            <div><img src="../assets/img/qatan.jpg"></div>
             <div>
                 <h1 class="titulo">Qatan version completa</h1>
                 <h2>$29.990 CLP </h2>
                 <button type="button" class="ver_detalle" data-bs-toggle="modal" data-bs-target="#modal1">
             Ver detalle
             </button>
-            
+            <button class="agregar" data-nombre="Qatan" data-precio="29990">Añadir</button>
 
         <div class="modal fade" id="modal1" tabindex="-1">
          <div class="modal-dialog">
             <div class="modal-content">
             <div class="modal-body">
-            <img src="src/assets/img/qatan.jpg" class="img-fluid">
+            <img src="../assets/img/qatan.jpg" class="img-fluid">
             <h3>Qatan</h3>
             <p>El objetivo del juego es construir poblados, ciudades y caminos sobre un tablero que es distinto cada vez, mientras se van acumulando varios tipos de cartas. Todos estos elementos proporcionan distintas puntuaciones, ganando la partida el primer jugador que llega a los diez puntos.</p>
             <p> 3 o 4 jugadores</p>
@@ -129,19 +77,19 @@
 
         <div class="ele_prod">
             <div>
-                <img src="src/assets/img/silla_gamer.jfif">
+                <img src="../assets/img/silla_gamer.jfif">
             </div>
             <h1 class="titulo">Silla Secretlab Titan </h1>
             <h2>$349.990 CLP </h2>
         
             <button type="button" class="ver_detalle" data-bs-toggle="modal" data-bs-target="#modal2">Ver detalle</button>
-      
+            <button class="agregar" data-nombre="Silla Secretlab Titan" data-precio="349990">Añadir</button>
     
         <div class="modal fade" id="modal2" tabindex="-1">
          <div class="modal-dialog">
             <div class="modal-content">
             <div class="modal-body">
-            <img src="src/assets/img/silla_gamer.jfif" class="img-fluid">
+            <img src="../assets/img/silla_gamer.jfif" class="img-fluid">
             <h3>Silla Secretlab Titan</h3>
             <p>Sujeción ergonómica personalizada para todos los tamaños. Porque no hay dos usuarios iguales. El mismo apoyo lumbar ajustable y las mismas características ergonómicas avaladas por la investigación para una experiencia gaming excepcional, independientemente del tamaño que elijas. Disponible en tamaño Small, Regular y XL: elije la que mejor se adapte a tus medidas.</p>    
             <p>Small ≤169cm / ≤90kg</p>
@@ -165,18 +113,18 @@
 
         <div class="ele_prod">
             <div>
-                <img src="src/assets/img/audifonos.jfif">
+                <img src="../assets/img/audifonos.jfif">
             </div>
             <h1 class="titulo">Auriculares Gamer HyperX</h1>
             <h2>$79.990 CLP </h2>
             <button type="button" class="ver_detalle" data-bs-toggle="modal" data-bs-target="#modal3">Ver detalle</button>
-            
+            <button class="agregar" data-nombre="Auriculares Gamer HyperX" data-precio="79990">Añadir</button>
             
             <div class="modal fade" id="modal3" tabindex="-1">
          <div class="modal-dialog">
             <div class="modal-content">
             <div class="modal-body">
-            <img src="src/assets/img/audifonos.jfif" class="img-fluid">
+            <img src="../assets/img/audifonos.jfif" class="img-fluid">
             <h3>Auriculares Gamer HyperX</h3>
             <p>Proporcionan un sonido envolvente de calidad con un
                 micrófono desmontable y almohadillas de espuma viscoelástica para mayor comodidad
@@ -197,18 +145,18 @@
 
         <div class="ele_prod">
             <div>
-                <img src="src/assets/img/play5.jfif">
+                <img src="../assets/img/play5.jfif">
             </div>
             <h1 class="titulo">Play 5</h1>
             <h2>$549.990 CLP </h2>
             <button type="button" class="ver_detalle" data-bs-toggle="modal" data-bs-target="#modal4" >Ver detalle</button>
-
+            <button class="agregar"data-nombre="Play 5" data-precio="549990" >Añadir</button>
 
         <div class="modal fade" id="modal4" tabindex="-1">
          <div class="modal-dialog">
             <div class="modal-content">
             <div class="modal-body">
-            <img src="src/assets/img/play5.jfif" class="img-fluid">
+            <img src="../assets/img/play5.jfif" class="img-fluid">
             <h3>Play 5</h3>
             <p>La consola de última generación de Sony, que ofrece gráficos
 impresionantes y tiempos de carga ultrarrápidos para una experiencia de juego inmersiva.</p>    
@@ -228,16 +176,17 @@ impresionantes y tiempos de carga ultrarrápidos para una experiencia de juego i
 
         <div class="ele_prod">
             <div>
-                <img src="src/assets/img/polera_per.png">
+                <img src="../assets/img/polera_per.png">
             </div>
             <h1 class="titulo">Polera</h1>
             <h2>$14.990 CLP </h2>
             <button type="button" class="ver_detalle" data-bs-toggle="modal" data-bs-target="#modal5" >Ver detalle</button>
+            <button class="agregar"data-nombre="Polera" data-precio="14990">Añadir</button>
             <div class="modal fade" id="modal5" tabindex="-1">
          <div class="modal-dialog">
             <div class="modal-content">
             <div class="modal-body">
-            <img src="src/assets/img/polera_per.png"class="img-fluid">
+            <img src="../assets/img/polera_per.png" class="img-fluid">
             <h3>Polera</h3>
             <p>Una camiseta cómoda y estilizada, con la
             posibilidad de personalizarla con tu gamer tag o diseño favorito.</p>    
@@ -258,16 +207,17 @@ impresionantes y tiempos de carga ultrarrápidos para una experiencia de juego i
 
         <div class="ele_prod">
             <div>
-                <img src="src/assets/img/pc_gamer.jfif">
+                <img src="../assets/img/pc_gamer.jfif">
             </div>
             <h1 class="titulo">PC ASUS ROG Strix </h1>
             <h2>$1.299.990 CLP</h2>
             <button type="button" class="ver_detalle" data-bs-toggle="modal" data-bs-target="#modal6" >Ver detalle</button>
+            <button class="agregar" data-nombre="Pc Asus RogStrix" data-precio="1299990">Añadir</button>
             <div class="modal fade" id="modal6" tabindex="-1">
          <div class="modal-dialog">
             <div class="modal-content">
             <div class="modal-body">
-            <img src="src/assets/img/pc_gamer.jfif" class="img-fluid">
+            <img src="../assets/img/pc_gamer.jfif" class="img-fluid">
             <h3>PC ASUS ROG Strix</h3>
             <p>Un potente equipo diseñado para los gamers más exigentes,
 equipado con los últimos componentes para ofrecer un rendimiento excepcional en
@@ -288,16 +238,17 @@ cualquier juego.</p>
 
         <div class="ele_prod">
             <div>
-                <img src="src/assets/img/mousepad.jfif">
+                <img src="../assets/img/mousepad.jfif">
             </div>
             <h1 class="titulo">Mousepad</h1>
             <h2>$29.990 CLP</h2>
             <button type="button" class="ver_detalle" data-bs-toggle="modal" data-bs-target="#modal7">Ver detalle</button>
+            <button class="agregar"data-nombre="Mousepad" data-precio="29990">Añadir</button>
              <div class="modal fade" id="modal7" tabindex="-1">
          <div class="modal-dialog">
             <div class="modal-content">
             <div class="modal-body">
-            <img src="src/assets/img/mousepad.jfif" class="img-fluid">
+            <img src="../assets/img/mousepad.jfif" class="img-fluid">
             <h3>Mousepad</h3>
             <p>Ofrece un área de juego amplia con
 iluminación RGB personalizable, asegurando una superficie suave y uniforme para el
@@ -317,18 +268,18 @@ movimiento del mouse</p>
 
         <div class="ele_prod">
             <div>
-                <img src="src/assets/img/mando.jfif">
+                <img src="../assets/img/mando.jfif">
             </div>
             <h1 class="titulo">Mando Play 5</h1>
             <h2>$59.990 CLP </h2>
             <button type="button" class="ver_detalle" data-bs-toggle="modal" data-bs-target="#modal8">Ver detalle</button>
-            
+            <button class="agregar"data-nombre="Mando Play 5" data-precio="59990">Añadir</button>
         
             <div class="modal fade" id="modal8" tabindex="-1">
          <div class="modal-dialog">
             <div class="modal-content">
             <div class="modal-body">
-            <img src="src/assets/img/mando.jfif" class="img-fluid">
+            <img src="../assets/img/mando.jfif" class="img-fluid">
             <h3>Mando Play 5</h3>
             <p>Ofrece una experiencia de juego cómoda con
             botones mapeables y una respuesta táctil mejorada. Compatible con consolas Play station 5 y PC.</p>    
@@ -347,17 +298,17 @@ movimiento del mouse</p>
 
         <div class="ele_prod">
             <div>
-                <img src="src/assets/img/monopoly.jpg">
+                <img src="../assets/img/monopoly.jpg">
             </div>
             <h1 class="titulo">Monopoly Gamer</h1>
             <h2>$24.990 CLP </h2>
             <button type="button" class="ver_detalle" data-bs-toggle="modal" data-bs-target="#modal9">Ver detalle</button>
-
+            <button class="agregar" data-nombre="Monopoly Gamer" data-precio="24990">Añadir</button>
             <div class="modal fade" id="modal9" tabindex="-1">
          <div class="modal-dialog">
             <div class="modal-content">
             <div class="modal-body">
-            <img src="src/assets/img/monopoly.jpg" class="img-fluid">
+            <img src="../assets/img/monopoly.jpg" class="img-fluid">
             <h3>Monopoly Gamer</h3>
             <p>El Monopoly Gamer reinventa el clásico juego de mesa con la magia de Super Mario. Disfruta partidas llenas de acción con personajes icónicos, habilidades especiales y batallas contra jefes, haciendo cada juego más emocionante y divertido. ¡Perfecto para compartir en familia o con amigos!</p>    
             <h3>$24.990 CLP</h3> 
@@ -376,16 +327,17 @@ movimiento del mouse</p>
 
         <div class="ele_prod">
             <div>
-                <img src="src/assets/img/mouse.jfif">
+                <img src="../assets/img/mouse.jfif">
             </div>
             <h1 class="titulo">Gamer Logitech G502</h1>
             <h2>$49.990 CLP</h2>
             <button type="button" class="ver_detalle" data-bs-toggle="modal" data-bs-target="#modal10">Ver detalle</button>
+            <button class="agregar" data-nombre="Gamer Logitech G502" data-precio="49990">Añadir</button>
                         <div class="modal fade" id="modal10" tabindex="-1">
          <div class="modal-dialog">
             <div class="modal-content">
             <div class="modal-body">
-            <img src="src/assets/img/mouse.jfif" class="img-fluid">
+            <img src="../assets/img/mouse.jfif" class="img-fluid">
             <h3>Gamer Logitech G502</h3>
             <p>Mouse Gamer Logitech G502 HERO: Con sensor de alta precisión y botones
 personalizables, este mouse es ideal para gamers que buscan un control preciso y
@@ -398,16 +350,21 @@ personalización.</p>
             </div>
         </div>
         </div>
-        </div>
-   
+        </div>     
+
+
+
+
+
+
       <footer>
-        <img src="src/assets/img/logo_levelup.png" class="logo_footer">
+        <img src="../assets/img/logo_levelup.png" class="logo_footer">
         <div class="contacto">
-          <img src="src/assets/img/insta.png" alt="">
+          <img src="../assets/img/insta.png" alt="">
           <h6>LevelUp@oficial</h6>
         </div>
         <div class="contacto">
-          <img src="src/assets/img/logo_gmail.jfif" alt="">
+          <img src="../assets/img/logo_gmail.jfif" alt="">
           <h6>LevelUp@gmail.com</h6>
         </div>
         <div>
@@ -417,11 +374,9 @@ personalización.</p>
         <button type="button" class="btn btn-danger">Enviar</button>
         </div>
       </footer>
-
 </body>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+<script src="../assets/js/redireccionamiento.js"></script>
+<script src="../assets/js/agregar.js"></script>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
-    crossorigin="anonymous"></script>
-    <script src="src/assets/js/redireccionamiento.js"></script>
 </html>
