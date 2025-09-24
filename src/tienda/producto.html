@@ -1,14 +1,13 @@
+<!DOCTYPE html>
 <html lang="es">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home</title>
+    <title>Productos</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
-    <link rel="stylesheet" href="../assets/css/estilo.css">
+    integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+  <link rel="stylesheet" href="../assets/css/estilo.css">
 </head>
-
 <body>
     <nav class="navbar fixed-top">
         <div class="container-fluid">
@@ -20,9 +19,9 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link" href="../tienda/producto.html">Productos</a>
+                        <a class="nav-link disabled" aria-disabled="true" href="../tienda/producto.html">Productos</a>
                     </li>
-                    <li class="nav-item">
+                     <li class="nav-item">
                         <a class="nav-link" href="../tienda/carrito.html">Carrito</a>
                     </li>
                     <li class="nav-item">
@@ -34,63 +33,13 @@
                     <li class="nav-item">
                         <a class="nav-link" href="../tienda/contacto.html">Contacto</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="../../index.html" id="btnLogout">Cerrar sesion</a>
-                    </li>
                 </ul>
             </div>
         </div>
     </nav>
-
-    <div class="carrusel_prin">
-        <div id="carouselExampleCaptions" class="carousel">
-            <div class="carousel-indicators">
-                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active"
-                    aria-current="true" aria-label="Slide 1"></button>
-                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1"
-                    aria-label="Slide 2"></button>
-                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2"
-                    aria-label="Slide 3"></button>
-            </div>
-            <div class="carousel-inner">
-                <div class="carousel-item active">
-                    <img src="../assets/img/imgnoticia1.jpg" class="d-block w-100" alt="...">
-                    <div class="carousel-caption d-none d-md-block">
-                        <h5>Nuevos modelos</h5>
-                        <p>Razer anuncia los BlackShark V3 Pro</p>
-                    </div>
-                </div>
-                <div class="carousel-item">
-                    <img src="../assets/img/imgnoticia2_complemento2.jpg" class="d-block w-100" alt="...">
-                    <div class="carousel-caption d-none d-md-block">
-                        <h5>Ahora se premian los logros</h5>
-                        <p>Sony abrió una tienda de merchandising exclusiva </p>
-                    </div>
-                </div>
-                <div class="carousel-item">
-                    <img src="../assets/img/polera_per.png" class="d-block w-100" alt="...">
-                    <div class="carousel-caption d-none d-md-block">
-                        <h5>Nuevas poleras</h5>
-                        <p>Compra ya tu polera personalizada</p>
-                    </div>
-                </div>
-            </div>
-            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions"
-                data-bs-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Previous</span>
-            </button>
-            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions"
-                data-bs-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Next</span>
-            </button>
-        </div>
-    </div>
-
-    <div class="list_prod">
+      <div class="list_prod">
         <h1 class="titulo">Productos</h1>
-    </div>
+        </div>
 
  <div class="distribucion">
         <div class="ele_prod">
@@ -401,11 +350,13 @@ personalización.</p>
             </div>
         </div>
         </div>
-        </div>
+        </div>     
 
 
 
-        </div>
+
+
+
       <footer>
         <img src="../assets/img/logo_levelup.png" class="logo_footer">
         <div class="contacto">
@@ -423,13 +374,9 @@ personalización.</p>
         <button type="button" class="btn btn-danger">Enviar</button>
         </div>
       </footer>
-
 </body>
-
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
-    crossorigin="anonymous"></script>
-<script src="../assets/js/validar_sesion.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
 <script src="../assets/js/redireccionamiento.js"></script>
 <script src="../assets/js/agregar.js"></script>
+
 </html>

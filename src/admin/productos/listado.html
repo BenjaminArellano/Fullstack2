@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Level Up Gamer</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="../../assets/css/admin.css">
+</head>
+<body>
+    <div class="d-flex">
+    <!-- Botón hamburguesa para móvil -->
+    <button class="btn btn-dark d-md-none" id="sidebarToggle" style="position: fixed; top: 10px; left: 10px; z-index: 1050; border-radius: 5px;">
+        <i class="fas fa-bars"></i>
+    </button>
+
+    <!-- Barra lateral -->
+    <aside class="bg-dark text-white p-3 d-flex flex-column sidebar" id="sidebar" style="width: 250px; height: 100vh; position: fixed; top: 0; left: 0; z-index: 1000; overflow-y: auto;">
+        <div class="d-flex align-items-center mb-3">
+            <img src="../../assets/img/icon.png" alt="Level-Up Gamer" style="height: 40px; width: auto;">
+            <span class="ms-2 fs-5 fw-bold">Level-Up Gamer</span>
+        </div>
+        <hr class="border-secondary">
+        <h4>Admin</h4>
+        <ul class="nav flex-column flex-grow-1">
+            <li class="nav-item"><a class="nav-link text-white" href="../admin.html"><i class="fas fa-tachometer-alt me-2"></i>Dashboard</a></li>
+
+            <!-- Productos -->
+            <li class="nav-item">
+                <a class="nav-link text-white" data-bs-toggle="collapse" href="#menuProductos" role="button">
+                <i class="fas fa-box me-2"></i>Productos
+                </a>
+                <div class="collapse" id="menuProductos">
+                    <ul class="nav flex-column ms-3">
+                        <li><a class="nav-link text-white" href="./listado.html"><i class="fas fa-list me-2"></i>• Listado</a></li>
+                        <li><a class="nav-link text-white" href="./nuevo.html"><i class="fas fa-plus me-2"></i>• Nuevo Producto</a></li>
+                    </ul>
+                </div>
+            </li>
+
+            <!-- Usuarios -->
+            <li class="nav-item">
+                <a class="nav-link text-white" data-bs-toggle="collapse" href="#menuUsuarios" role="button">
+                <i class="fas fa-users me-2"></i>Usuarios
+                </a>
+                <div class="collapse" id="menuUsuarios">
+                    <ul class="nav flex-column ms-3">
+                        <li><a class="nav-link text-white" href="../usuarios/listado.html"><i class="fas fa-list me-2"></i>• Listado</a></li>
+                        <li><a class="nav-link text-white" href="../usuarios/nuevo.html"><i class="fas fa-plus me-2"></i>• Nuevo Usuario</a></li>
+                    </ul>
+                </div>
+            </li>
+        </ul>
+
+        <!-- Botón Salir fijo al final -->
+        <div class="mt-auto">
+            <ul class="nav flex-column">
+                <li class="nav-item"><a class="nav-link text-white" id="btnLogout"><i class="fas fa-sign-out-alt me-2"></i>Salir</a></li>
+            </ul>
+        </div>
+    </aside>
+
+    <main class="container mt-4 main-content" style="margin-left: 250px;">
+        <div class="d-flex justify-content-between align-items-center mb-3">
+            <h2>Listado de Productos</h2>
+            <div>
+                <button class="btn btn-danger me-2" onclick="resetearProductos()" title="Resetear Productos">
+                    <i class="fas fa-undo"></i>
+                </button>
+                <a href="nuevo.html" class="btn btn-success" title="Agregar Producto">
+                    <i class="fas fa-plus"></i>
+                </a>
+            </div>
+        </div>
+
+        <div class="mb-3">
+            <input type="text" class="form-control" id="search-input" placeholder="Buscar por nombre o categoría...">
+        </div>
+
+        <table class="gamer-table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nombre</th>
+                    <th>Categoría</th>
+                    <th>Precio</th>
+                    <th>Stock</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody id="tabla-productos">
+
+            </tbody>
+        </table>
+
+        <nav aria-label="Paginación de productos">
+            <ul class="pagination justify-content-center" id="pagination">
+                
+            </ul>
+        </nav>
+
+
+
+
+    </main>
+
+    <!-- Modal Editar Producto -->
+    <div class="modal fade" id="editarProductoModal" tabindex="-1" aria-labelledby="editarProductoModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content bg-dark text-white">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="editarProductoModalLabel">Editar Producto</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-card">
+                        <form id="form-editar-producto-modal" novalidate>
+                            <div class="form-grid">
+                                <div class="mb-3">
+                                    <label for="edit-nombre-modal" class="form-label">Nombre <span class="text-danger">*</span></label>
+                                    <input
+                                        type="text"
+                                        class="form-control"
+                                        id="edit-nombre-modal"
+                                        name="nombre"
+                                        required
+                                        maxlength="100"
+                                    />
+                                    <div class="invalid-feedback">
+                                        El nombre es requerido y debe tener máximo 100 caracteres.
+                                    </div>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="edit-descripcion-modal" class="form-label">Descripción</label>
+                                    <textarea
+                                        class="form-control"
+                                        id="edit-descripcion-modal"
+                                        name="descripcion"
+                                        maxlength="500"
+                                        rows="3"
+                                    ></textarea>
+                                    <div class="invalid-feedback">
+                                        La descripción debe tener máximo 500 caracteres.
+                                    </div>
+                                </div>
+
+                                <div class="mb-3 input-with-icon">
+                                    <label for="edit-precio-modal" class="form-label">Precio <span class="text-danger">*</span></label>
+                                    <input
+                                        type="number"
+                                        class="form-control"
+                                        id="edit-precio-modal"
+                                        name="precio"
+                                        required
+                                        min="0"
+                                        step="0.01"
+                                    />
+                                    <i class="fas fa-dollar-sign input-icon"></i>
+                                    <div class="invalid-feedback">
+                                        El precio es requerido y debe ser un número mayor o igual a 0.
+                                    </div>
+                                </div>
+
+                                <div class="mb-3 input-with-icon">
+                                    <label for="edit-stock-modal" class="form-label">Stock <span class="text-danger">*</span></label>
+                                    <input
+                                        type="number"
+                                        class="form-control"
+                                        id="edit-stock-modal"
+                                        name="stock"
+                                        required
+                                        min="0"
+                                        step="1"
+                                    />
+                                    <i class="fas fa-boxes input-icon"></i>
+                                    <div class="invalid-feedback">
+                                        El stock es requerido y debe ser un número entero mayor o igual a 0.
+                                    </div>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="edit-stockCritico-modal" class="form-label">Stock Crítico</label>
+                                    <input
+                                        type="number"
+                                        class="form-control"
+                                        id="edit-stockCritico-modal"
+                                        name="stockCritico"
+                                        min="0"
+                                        step="1"
+                                    />
+                                    <div class="invalid-feedback">
+                                        El stock crítico debe ser un número entero mayor o igual a 0.
+                                    </div>
+                                </div>
+
+                                <div class="mb-3 input-with-icon">
+                                    <label for="edit-categoria-modal" class="form-label">Categoría <span class="text-danger">*</span></label>
+                                    <select class="form-select" id="edit-categoria-modal" name="categoria" required disabled>
+                                        <option value="" disabled>Seleccione una categoría</option>
+                                        <option value="Juegos de Mesa">Juegos de Mesa</option>
+                                        <option value="Accesorios">Accesorios</option>
+                                        <option value="Consolas">Consolas</option>
+                                        <option value="Computadores Gamers">Computadores Gamers</option>
+                                        <option value="Sillas Gamers">Sillas Gamers</option>
+                                        <option value="Mouse">Mouse</option>
+                                        <option value="Mousepad">Mousepad</option>
+                                        <option value="Poleras Personalizadas">Poleras Personalizadas</option>
+                                    </select>
+                                    <i class="fas fa-tag input-icon"></i>
+                                    <div class="invalid-feedback">
+                                        La categoría es requerida.
+                                    </div>
+                                    <small class="form-help">La categoría debe ser seleccionada correctamente.</small>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="edit-imagen-modal" class="form-label">Imagen (URL)</label>
+                                    <input
+                                        type="url"
+                                        class="form-control"
+                                        id="edit-imagen-modal"
+                                        name="imagen"
+                                        placeholder="https://ejemplo.com/imagen.jpg"
+                                    />
+                                    <div class="invalid-feedback">
+                                        Por favor ingrese una URL válida para la imagen.
+                                    </div>
+                                    <small class="form-help">La URL debe ser válida.</small>
+                                </div>
+                            </div>
+
+                            <div class="form-buttons">
+                                <button type="submit" class="btn-save">Guardar Cambios</button>
+                                <button type="button" class="btn-cancel" data-bs-dismiss="modal">Cancelar</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="../../../src/assets/js/validar_sesion2.js"></script>
+    <script src="../../assets/js/productos.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        
+        document.getElementById('sidebarToggle').addEventListener('click', function() {
+            const sidebar = document.getElementById('sidebar');
+            const mainContent = document.querySelector('.main-content');
+
+            if (sidebar.classList.contains('d-none')) {
+                sidebar.classList.remove('d-none');
+                mainContent.style.marginLeft = '250px';
+            } else {
+                sidebar.classList.add('d-none');
+                mainContent.style.marginLeft = '0';
+            }
+        });
+
+        
+        function checkScreenSize() {
+            const sidebar = document.getElementById('sidebar');
+            const mainContent = document.querySelector('.main-content');
+            const sidebarToggle = document.getElementById('sidebarToggle');
+
+            if (window.innerWidth < 768) {
+                
+                sidebar.classList.add('d-none');
+                mainContent.style.marginLeft = '0';
+                sidebarToggle.style.display = 'block';
+            } else {
+                
+                sidebar.classList.remove('d-none');
+                mainContent.style.marginLeft = '250px';
+                sidebarToggle.style.display = 'none';
+            }
+        }
+
+        
+        window.addEventListener('load', checkScreenSize);
+        window.addEventListener('resize', checkScreenSize);
+
+        
+        document.addEventListener('DOMContentLoaded', function() {
+            if (window.innerWidth < 768) {
+                const sidebarToggle = document.getElementById('sidebarToggle');
+                sidebarToggle.style.display = 'block';
+            }
+        });
+    </script>
+</body>
+</html>
