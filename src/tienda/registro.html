@@ -53,22 +53,24 @@
     <input class="recuadros" placeholder="Telefono(Opcional)"></input>
     </div>
     <div>
-      <select>
-        <option value="" disabled selected>Seleccione region</option>
-        <option value="opcion1">Region 1</option>
-        <option value="opcion2">Region 2</option>
-      </select>
+      
+    <select id="regionRegistro">
+      <option value="" disabled selected>Seleccione región</option>
+      <option value="Región Metropolitana">Región Metropolitana</option>
+      <option value="Región de Valparaíso">Región de Valparaíso</option>
+      <option value="Región del Biobío">Región del Biobío</option>
+      <option value="Región de la Araucanía">Región de la Araucanía</option>
+      <option value="Región de Los Lagos">Región de Los Lagos</option>
+    </select>
 
-      <select>
-        <option value="" disabled selected>Seleccione comuna</option>
-        <option value="opcion1">Puente alto</option>
-        <option value="opcion2">chimbarongo</option>
-      </select>
+    <select id="comunaRegistro">
+      <option value="" disabled selected>Seleccione comuna</option>
+    </select>
       
     </div>
     <div>
     <button class="registro" style="margin-top: 10px;">Registrarse</button>
-     <h6><a href="../tienda/Login.html" >Si ya tiene cuenta presione aqui</a></h6>
+    <h6><a href="../tienda/Login.html" >Si ya tiene cuenta presione aqui</a></h6>
     </div>
   </div>
 
@@ -84,12 +86,17 @@
         </div>
         <div>
         <input type="email"  pattern="^[a-zA-Z0-9._%+-]+@(gmail.com|duocuc.cl|profesor.duoc.cl)$"
-       title="Debe ser un correo @gmail.com, @duocuc.cl o @profesor.duoc.cl"
-       required placeholder="Enter Email"></input>
+        title="Debe ser un correo @gmail.com, @duocuc.cl o @profesor.duoc.cl"
+        required placeholder="Enter Email"></input>
         <button type="button" class="btn btn-danger">Enviar</button>
         </div>
       </footer>
 </body>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
 <script src="../assets/js/redireccionamiento.js"></script>
+<script src="../assets/js/regiones.js"></script>
+<script src="../assets/js/usuarios.js"></script>
+<script>
+  poblarComunas('regionRegistro', 'comunaRegistro');
+</script>
 </html>

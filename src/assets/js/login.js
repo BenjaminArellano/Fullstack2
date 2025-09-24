@@ -27,6 +27,6 @@ loginForm.addEventListener("submit", (event)=>{
         
         const token = btoa( JSON.stringify(payload) )
         localStorage.setItem("token",token)
-        window.location.href = "##########################################"//Aqui se pone la ruta de la pagina de inicio de admin
+        window.location.href = "../admin/admin.html"//Aqui se pone la ruta de la pagina de inicio de admin
     }
 })
